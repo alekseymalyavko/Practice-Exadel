@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> News Portal </title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="./script.js"></script>
+
+
+
+</head>
+
+  <body >
+            <div class="menu">
+            <div class="buttons clearfix">
+
+              <button type="button" class="btn btn-primary btn-lg pull-left" data-toggle="modal" data-target="#Create" onClick='location.href="create.html"'> Create news  </button>
+              
+              <form><input class="search pull-left" type="text" name="search" placeholder="Search.."></form>
+                                                                         
+              <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#Registration">Registration </button>
+              <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#signup">Sign Up </button> 
+            </div>
+            </div>
+
+<header>
+  <div class="name text-center" > 
+  <h1>News portal</h1>
+  <hr>
+  </div>
+</header>
+
+
+
+<section >
+
+  <div class="row clearfix">
+   <div class="main1">
+    <div class="wrapper" >
+          <div class="tabs">
+              <span class="tab"  id="first1" >Sport</span>
+              <span class="tab"  id="second2">Parties</span>
+              <span class="tab"  id="third3">Concerts</span>
+          </div>
+
+
+  <div class="tab_item clearfix "  id="first">
+
+  </div>
+  
+
+  <div class="tab_item clearfix "  id="second">
+
+  </div>
+
+<div class="tab_item clearfix "  id="third">
+
+
+</div>
+
+
+
+  </div>
+  </div>
+  </div>
+    
+
+</section>
+   
+    
+
+
+<div class="kkk">
+  
+</div>
+
+
+  <!-- Modal -->
+
+  <div class="modal fade" id="Registration"    role="dialog" aria-labelledby="RegistrationLabel">
+    <div class="modal-dialog" role="document">
+ <form >
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" >Registration</h4>
+        </div>
+        <div class="modal-body">   
+
+          <div class="input-group input-group-lg">
+           <span class="input-group-addon" ><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+             <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" name="email" id="email_r">
+              </div>
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+               <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="name" id="name_r">
+                </div>
+
+                <div class="input-group input-group-lg">
+                <span class="input-group-addon" ><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+               <input type="password" class="form-control password" placeholder="Password" aria-describedby="sizing-addon1" name="password" id="password_r">
+              </div>
+
+                   <div class="checkbox" >
+                  <label>
+                    <input type="checkbox" >  I Agree to the Terms and Conditions</label>
+                        </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="savebutton_r">OK</button>
+        </div>
+    </div>
+  </form>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="signup"  role="dialog" aria-labelledby="signuplLabel">
+    <div class="modal-dialog" role="document">
+    <form >
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" >Sign Up</h4>
+        </div>
+        <div class="modal-body"> 
+
+      <div class="input-group input-group-lg">
+           <span class="input-group-addon" ><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+             <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" name="email" id="email_s">
+              </div>
+
+      <div class="input-group input-group-lg">
+           <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+             <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1" name="password" id="password_s">
+                </div>
+
+
+      </div>
+        <div class="modal-footer">
+
+          <div id="oper" style="color: red"> </div>
+
+
+          <button type="button" class="btn btn-default " data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-primary" id="savebutton_s">OK</button>
+        </div>
+  </div>
+</form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+   <script>
+
+     $(function(){
+
+$(".dess").text(function(index, currentText) {
+    return currentText.substr(0, 300);
+    });
+});
+
+    </script>
+
+
+  <script>
+  
+      $(document).ready(function () {
+
+
+      $("#savebutton_s").click(function(s) {
+          s.preventDefault();
+      var email = $("#email_s").val();
+      var password = $("#password_s").val();
+         
+         localStorage.setItem('email', email);
+         localStorage.setItem('password_s', password);
+
+      });
+      });
+
+   </script>
+
+ <script>
+
+          $(document).ready(function () {
+
+            $("#savebutton_r").click(function(r) {
+              r.preventDefault();
+          var name = $("#name_r").val();
+          var email = $("#email_r").val();
+          var password = $("#password_r").val();
+             
+             localStorage.setItem('name_r', name);
+             localStorage.setItem('email_r', email);
+             localStorage.setItem('password_r', password);
+
+             $("#Registration").modal("hide");
+          
+          });
+
+          })
+  </script>
+
+
+  </body>
+  </html>

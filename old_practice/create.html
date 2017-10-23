@@ -1,0 +1,94 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Create News </title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  
+
+
+  </head>
+
+
+  <body>
+  <div class="create text-center clearfix" > 
+          
+         
+  
+         <h1>Create interesting news!</h1>
+        
+          <div class="col-md-8 col-sm-6">
+              <div class="input-group input-group-lg" >
+               <input  type="text" class="form-control" placeholder="Name" name="name" id="name">
+                </div>
+
+      
+
+             <div class="input-group input-group-lg">
+               <input  type="text" class="form-control" placeholder="Title" name="title" id="title">
+                </div>
+
+
+            <div >
+              <textarea class="textarea form-control" type="text" placeholder="Description" rows="3" name="description" id="description"></textarea>
+              </div>
+
+                 <div class="checkbox">
+                  <label>
+                  <input type="checkbox" id="check" >  I Agree to the Terms and Conditions</label>
+           
+           <div class="button_c">
+
+          <button type="button" class="btn btn-default" onClick='location.href="index.html"'>Home</button>
+          <button type="submit" class="btn btn-primary" id="savebutton">OK</button>
+           </div>
+
+           </div>
+
+                        </div>
+                        
+                        </div>
+
+
+
+
+
+  <script>
+
+  $(document).ready(function () {
+
+
+    $("#savebutton").click(function(e) {
+      e.preventDefault();
+
+  var name = $("#name").val();
+  var title = $("#title").val();
+  var description = $("#description").val();
+
+     
+     localStorage.setItem('name', name);
+     localStorage.setItem('title', title);
+     localStorage.setItem('description', description);
+
+
+     $("#Create").modal("hide");
+     
+
+  });
+
+  })
+  </script>
+
+
+
+
+  </body>
+  </html>
