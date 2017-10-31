@@ -64,7 +64,7 @@ function addSresults(){
 
    	var p = document.createElement('div');
     p.id="description_text";
-    p.innerHTML= "<p>"+"this video about rabbits which killed people"+"</p>"+"<p>"+"Author:"+"ivan petrov"+"</p>";
+    p.innerHTML= "<p>"+"This video about rabbits which killed people."+"</p>"+"<p>"+"Author:"+"Ivan Petrov"+"</p>";
     first_div.appendChild(p);
 
 
@@ -88,21 +88,19 @@ function addSresults(){
 
 
 /*footer*/
-
+function addFooter(){
     footer = document.createElement("footer");
     document.body.appendChild(footer);
 
-    author_1=document.createElement('span')
-    author_1.id='author';
-   	author_1.innerHTML= "© Malyavko Aleksey";
-    footer.appendChild(author_1);
-
+    drop=document.createElement('a')
+    footer.appendChild(drop);
+}
 
 /*footer*/
 
 addLogo();
 addInput();
 addSresults();
-
+addFooter();
 
 })();
