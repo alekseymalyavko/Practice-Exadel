@@ -1,3 +1,7 @@
+
+
+
+
 (function() {
 
 
@@ -57,12 +61,12 @@ function addSresults(){
     var a = document.createElement("a");
     a.id="description_link";
     a.innerHTML = "<h1>"+"Dangerous rabbits"+"</h1>";
-	a.href = "";
+    a.href = "";
     first_div.appendChild(a);
 
 
 
-   	var p = document.createElement('div');
+    var p = document.createElement('div');
     p.id="description_text";
     p.innerHTML= "<p>"+"This video about rabbits which killed people."+"</p>"+"<p>"+"Author:"+"Ivan Petrov"+"</p>";
     first_div.appendChild(p);
@@ -72,8 +76,8 @@ function addSresults(){
 
     var info_div = document.createElement("div");
     info_div.id="description_stats";
-	info_div.innerHTML = "<span>"+"Views:"+"53 000 000"+"</span>"+"<span>"+"Date:"+"21.08.2021"+"</span>";
-	first_div.appendChild(info_div);		
+    info_div.innerHTML = "<span>"+"Views:"+"53 000 000"+"</span>"+"<span>"+"Date:"+"21.08.2021"+"</span>";
+    first_div.appendChild(info_div);        
 
 };
 
