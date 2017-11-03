@@ -47,7 +47,7 @@ body{
     margin-top: 25px;
 }
 
-.second {
+#second {
     display: inline-block;
     margin: 20px;
 }
@@ -59,7 +59,8 @@ body{
      max-height: 400px;
      background-color: white;
      border: 3px solid black;
-     display: table;
+     margin: 15px;
+     display: inline-table;
 }
 
 .img-des h1{
@@ -69,7 +70,6 @@ body{
 	color: white;
     background-color: #858585;
 }
-
 
 #img {
     height: 100%;
@@ -133,5 +133,8 @@ footer a {
 	font-size: 20px;
     color: white;
 }
+
+
+
 
 /*footer*/
