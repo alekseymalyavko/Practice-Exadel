@@ -3,10 +3,6 @@
     var searchtext = "";
     var videoItems = [];
 
-
-
-
-    /*header*/
     var header = document.createElement("header");
     document.body.appendChild(header);
 
@@ -18,6 +14,7 @@
         header.appendChild(logo);
     }
 
+
     function addInput() {
 
         var input = document.createElement("input");
@@ -27,10 +24,12 @@
         input.onkeypress = function(e) {
             e = e || window.event;
             if (e.keyCode === 13) {
+
+                emptyList();
+
                 searchtext = e.target.value;
 
-                searching();
-                emptyList();
+                searching(searchtext);
 
             }
         }
@@ -39,12 +38,10 @@
     };
 
 
-    function searching() {
-        var xhr = new XMLHttpRequest(searchtext);
-
+    function searching(search, page) {
+        var xhr = new XMLHttpRequest(search);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
-
 
                 var info = JSON.parse(xhr.response);
 
@@ -52,18 +49,55 @@
                 var info1 = Object.values(info.items);
 
                 if (info1) {
-                    initClipList(info1);
+                    var str = getClipIds(info1);
+
+                    if (str) {
+                        statistics(str);
+                    }
                 }
             }
         }
-        xhr.open('GET', 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=' + searchtext, true);
+        xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search, true);
         xhr.send();
 
     };
 
-    function initClipList(items) {
+
+    function statistics(str) {
+
+        var xhr = new XMLHttpRequest(search);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+
+                var info = JSON.parse(xhr.response);
+                var info1 = Object.values(info.items);
+
+                addDescriptions(info1);
+
+            }
+        }
+        xhr.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=" + str + "&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A", true);
+        xhr.send();
+
+    };
+
+
+    function addDescriptions(info1) {
+
+        for (var i = 0; i < videoItems.length; ++i) {
+            videoItems[i].statistics = info1[i].statistics;
+        }
+        console.log(videoItems);
+
+        addSearchResults(videoItems);
+
+    }
+
+    function getClipIds(items) {
 
         var clipList = [];
+        var views = [];
+
 
         for (var i = 0; i < items.length; i++) {
 
@@ -71,6 +105,7 @@
             var date = new Date(Date.parse(entry.snippet.publishedAt));
             var shortId = entry.id.videoId;
 
+            views.push(shortId);
 
             clipList.push({
                 id: shortId,
@@ -79,126 +114,145 @@
                 thumbnail: entry.snippet.thumbnails.high.url,
                 description: entry.snippet.description,
                 author: entry.snippet.channelTitle,
-                // viewCount: entry.brandingSettings.trackingImageUrl,
                 publishDate: (date.getMonth() + 1) + "." + date.getDate() + "." + date.getFullYear()
             });
         }
 
         videoItems = clipList;
 
-        console.log(videoItems);
+        return views.join(',');
 
-
-        if (videoItems) {
-            addSresults(videoItems);
-        }
     }
 
 
+    var section = document.createElement("section");
+    section.id = "main";
+    document.body.appendChild(section);
 
 
-    /*header*/
+    function addSearchResults(info1) {
 
-    /*body*/
-
-
-
-
-
-    /*search-result*/
-
-    function addSresults(items) {
-
-        section = document.createElement("section");
-        section.id = "main";
-        document.body.appendChild(section);
-
-        var section_search = document.createElement("section");
-        section_search.id = "second";
-        section.appendChild(section_search);
+        var sectionSearch = document.createElement("section");
+        sectionSearch.id = "second";
+        section.appendChild(sectionSearch);
 
 
+        for (var i = 0; i < info1.length; i++) {
 
-        for (var i = 0; i < items.length; i++) {
-
-            var videoItems = items[i];
-
+            var videoItems = info1[i];
 
 
-            var first_div = document.createElement("div");
-            first_div.className = "img-des";
-            section_search.appendChild(first_div);
-
+            var firstDiv = document.createElement("div");
+            firstDiv.className = "img-des";
+            sectionSearch.appendChild(firstDiv);
 
 
             var img = document.createElement("img");
             img.id = "img";
             img.src = videoItems.thumbnail;
-            first_div.appendChild(img);
-
+            firstDiv.appendChild(img);
 
 
             var a = document.createElement("a");
             a.id = "description_link";
             a.innerHTML = "<h1>" + videoItems.title + "</h1>";
             a.href = videoItems.youtubeLink;
-            first_div.appendChild(a);
+            firstDiv.appendChild(a);
 
 
-
-            var p = document.createElement('div');
+            var p = document.createElement("div");
             p.id = "description_text";
             p.innerHTML = "<p>" + videoItems.description + "</p>" + "<p>" + "Author:" + videoItems.author + "</p>";
-            first_div.appendChild(p);
+            firstDiv.appendChild(p);
 
 
-
-
-            var info_div = document.createElement("div");
-            info_div.id = "description_stats";
-            info_div.innerHTML = "<span>" + "Views:" + videoItems.viewCount + "</span>" + "<span>" + "Date:" + videoItems.publishDate + "</span>";
-            first_div.appendChild(info_div);
+            var infoDiv = document.createElement("div");
+            infoDiv.id = "description_stats";
+            infoDiv.innerHTML = "<span>" + "Views: " + videoItems.statistics.viewCount + "</span>" + "<span>" + "Date: " + videoItems.publishDate + "</span>";
+            firstDiv.appendChild(infoDiv);
 
         }
-
-
     };
 
-
     function emptyList() {
-
-        document.body.removeChild(section);
+        var section = document.getElementById("main");
+        if (section) {
+            section.innerHTML = " ";
+        } else {
+            return;
+        }
 
     }
 
 
-
-
-
-    /*search-result*/
-
-
-
-
-
-
-    /*body*/
-
-
-    /*footer*/
     function addFooter() {
         footer = document.createElement("footer");
         document.body.appendChild(footer);
 
-        drop = document.createElement('a')
+        drop = document.createElement("a")
+        footer.appendChild(drop);
+        drop = document.createElement("a")
+        footer.appendChild(drop);
+        drop = document.createElement("a")
         footer.appendChild(drop);
     }
 
-    /*footer*/
+
+    function addArrows() {
+
+        leftArrow = document.createElement("a");
+        leftArrow.id = "arrow1";
+        leftArrow.innerHTML = "LEFT";
+        document.body.appendChild(leftArrow);
+
+        rightArrow = document.createElement("a");
+        rightArrow.id = "arrow2";
+        rightArrow.innerHTML = "RIGHT";
+        document.body.appendChild(rightArrow);
+    }
+
+
+    function screenSize() {
+        var s = document.innerHTML = "Screen width is " + screen.width; // думаю что лучше делать через проценты, тк будет сразу адаптация и не нужно писать проверку
+        console.log(s);
+
+    }
+
+
+
+
+    function moveClips() {
+        var counterL = 1
+        var counterR = 1
+
+        arrow1.onclick = function() {
+
+            var section = document.getElementById("second");
+            section.style.marginLeft = (-98 * counterL) + '%';
+            --counterL
+
+        }
+
+
+        arrow2.onclick = function() {
+
+            var section = document.getElementById("second");
+            section.style.marginLeft = (-98 * counterR) + '%';
+            ++counterR
+
+        }
+
+    }
+
 
     addLogo();
     addInput();
-    // addSresults();
     addFooter();
+
+    screenSize()
+
+    addArrows();
+    moveClips();
+
 
 })();

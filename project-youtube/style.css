@@ -7,7 +7,7 @@ html, body{
 header{
 	background-color: #320000;
 	text-align: center;
-	height: 85px;   
+	height: 75px;   
 }
 
 #logo{
@@ -26,6 +26,7 @@ header{
     text-align: center;
     width: 20%;
     font-size: 22px;
+    outline:none;
 }
 
 /*header*/
@@ -39,67 +40,88 @@ body{
     align-items: stretch;
 }
     
-    
-
 
 #main {
+    overflow: hidden;
     text-align: center;
-    margin-top: 25px;
+
 }
 
 #second {
-    display: inline-block;
-    margin: 20px;
+    display: inline-flex;
+    margin: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .img-des {
-     min-width: 300px;
-     max-width: 400px;
-     min-height: 300px;
-     max-height: 400px;
-     background-color: white;
-     border: 3px solid black;
-     margin: 15px;
-     display: inline-table;
+    min-width: 388px;
+    max-width: 400px;
+    background-color: #fff;
+    margin: 25px;
+    box-shadow: 10px 10px 28px black;
+    position: relative;
+    min-height: 450px;
+
 }
 
 .img-des h1{
-	margin: 0;
-	padding: 10px;
-	text-align: center;
-	color: white;
-    background-color: #858585;
+
 }
 
 #img {
-    height: 100%;
     width: 100%;
 }
 
+#description_link{
+    position: absolute;
+    bottom: 155px;
+    left: 0;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.63);
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+#description_link:hover{
+    color:red;
+    text-decoration: underline;
+
+}
+
 #description_text {
-    display: flex;
-        padding: 10px;
+     display: flex;
+     padding: 5px;
+     overflow: hidden;
 }
 
 #description_text p{
-   text-align: left;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
 }
 
 #description_stats {
-	color: white;
-    background-color: #858585;
-    text-align: center;
+    font-size: 20px;
     display: flex;
-    padding: 10px;
-    font-size: 18px;
-}
+    flex-flow: row nowrap;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    bottom: 0;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }
 
 #description_stats span {
  flex: 1 auto;
 
 }
     
-
 
 /*body*/
 
@@ -128,12 +150,27 @@ footer a {
     position: relative;
 }
 
+#arrow1{
+    float: left;
+    position: absolute;
+    top: 40%;
+    cursor: pointer;
+    margin: 15px;
+    background-color: white;
+    padding: 10px;
 
-#author{
-	font-size: 20px;
-    color: white;
 }
 
+#arrow2{
+    float: right;
+    position: absolute;
+    top: 40%;
+    right: 0;
+    background-color: white;
+    cursor: pointer;
+    margin: 15px;
+    padding: 10px;
+}
 
 
 
