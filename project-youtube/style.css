@@ -150,6 +150,13 @@ footer a {
     position: relative;
 }
 
+footer a:hover{
+    background-color: black;
+}
+
+footer a:active{
+    background-color: red;
+}
 #arrow1{
     float: left;
     position: absolute;

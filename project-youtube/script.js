@@ -2,6 +2,8 @@
 
     var searchtext = "";
     var videoItems = [];
+    var nextPage="";
+    var info_2=[];
 
     var header = document.createElement("header");
     document.body.appendChild(header);
@@ -44,8 +46,12 @@
             if (xhr.readyState == 4) {
 
                 var info = JSON.parse(xhr.response);
-
                 console.log(info);
+
+                nextPage = info.nextPageToken;
+                info_2 = nextPage;
+
+
                 var info1 = Object.values(info.items);
 
                 if (info1) {
@@ -56,8 +62,10 @@
                     }
                 }
             }
-        }
-        xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search, true);
+        } 
+        // &pageToken="+page+"
+
+        xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search, true);
         xhr.send();
 
     };
@@ -171,7 +179,17 @@
             infoDiv.innerHTML = "<span>" + "Views: " + videoItems.statistics.viewCount + "</span>" + "<span>" + "Date: " + videoItems.publishDate + "</span>";
             firstDiv.appendChild(infoDiv);
 
-        }
+
+
+        } 
+
+
+        drop = document.createElement("a")
+        footer.appendChild(drop);
+        drop = document.createElement("a")
+        footer.appendChild(drop);
+        drop = document.createElement("a")
+        footer.appendChild(drop);
     };
 
     function emptyList() {
@@ -189,12 +207,6 @@
         footer = document.createElement("footer");
         document.body.appendChild(footer);
 
-        drop = document.createElement("a")
-        footer.appendChild(drop);
-        drop = document.createElement("a")
-        footer.appendChild(drop);
-        drop = document.createElement("a")
-        footer.appendChild(drop);
     }
 
 
@@ -220,29 +232,48 @@
 
 
 
+function moveClips() {
 
-    function moveClips() {
-        var counterL = 1
-        var counterR = 1
+    var counter = 0;
 
-        arrow1.onclick = function() {
+    arrow1.onclick = function() {
 
-            var section = document.getElementById("second");
-            section.style.marginLeft = (-98 * counterL) + '%';
-            --counterL
-
-        }
+        var section = document.getElementById("second");
+        if (section.style.marginLeft === '0%') {
 
 
-        arrow2.onclick = function() {
-
-            var section = document.getElementById("second");
-            section.style.marginLeft = (-98 * counterR) + '%';
-            ++counterR
+        } else {
+            --counter
+            section.style.marginLeft = (-98 * counter) + '%';
 
         }
 
     }
+
+
+    arrow2.onclick = function() {
+        var section = document.getElementById("second");
+        
+        
+         if (section.style.marginLeft === '-392%') {
+
+           var page = info_2; 
+           console.log(page)
+
+           searching(page);
+
+
+
+        } else {
+            ++counter
+            section.style.marginLeft = (-98 * counter) + '%';
+
+        }
+
+    }
+
+}
+
 
 
     addLogo();
