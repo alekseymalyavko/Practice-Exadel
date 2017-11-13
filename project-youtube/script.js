@@ -2,8 +2,11 @@
 
     var searchtext = "";
     var videoItems = [];
-    var nextPage="";
-    var info_2=[];
+    var nextPage = "";
+    var nextPageToken = [];
+    var blocks = "";
+    var res = 10;
+
 
     var header = document.createElement("header");
     document.body.appendChild(header);
@@ -40,19 +43,18 @@
     };
 
 
-    function searching(search, page) {
+    function searching(search, PageToken) {
         var xhr = new XMLHttpRequest(search);
+
         xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
+            if (xhr.readyState === 4) {
 
                 var info = JSON.parse(xhr.response);
-                console.log(info);
-
-                nextPage = info.nextPageToken;
-                info_2 = nextPage;
-
-
                 var info1 = Object.values(info.items);
+
+
+                nextPageToken = info.nextPageToken;
+
 
                 if (info1) {
                     var str = getClipIds(info1);
@@ -62,13 +64,20 @@
                     }
                 }
             }
-        } 
-        // &pageToken="+page+"
+        }
 
-        xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search, true);
+        var url = "";
+
+        if (PageToken) {
+            url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10" + PageToken + "&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
+        } else {
+            url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
+        }
+
+        xhr.open("GET", url, true);
         xhr.send();
-
     };
+
 
 
     function statistics(str) {
@@ -82,8 +91,10 @@
 
                 addDescriptions(info1);
 
+
             }
         }
+
         xhr.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=" + str + "&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A", true);
         xhr.send();
 
@@ -95,11 +106,12 @@
         for (var i = 0; i < videoItems.length; ++i) {
             videoItems[i].statistics = info1[i].statistics;
         }
-        console.log(videoItems);
 
-        addSearchResults(videoItems);
+        addContent(videoItems);
 
     }
+
+
 
     function getClipIds(items) {
 
@@ -127,22 +139,19 @@
         }
 
         videoItems = clipList;
+        console.log(videoItems)
 
         return views.join(',');
 
     }
 
 
-    var section = document.createElement("section");
-    section.id = "main";
-    document.body.appendChild(section);
+    var sectionSearch = document.createElement("section");
+    sectionSearch.id = "second";
+    document.body.appendChild(sectionSearch);
 
 
-    function addSearchResults(info1) {
-
-        var sectionSearch = document.createElement("section");
-        sectionSearch.id = "second";
-        section.appendChild(sectionSearch);
+    function addContent(info1) {
 
 
         for (var i = 0; i < info1.length; i++) {
@@ -181,21 +190,47 @@
 
 
 
-        } 
+        }
 
 
-        drop = document.createElement("a")
-        footer.appendChild(drop);
-        drop = document.createElement("a")
-        footer.appendChild(drop);
-        drop = document.createElement("a")
-        footer.appendChild(drop);
+        if (!document.getElementById("arrow1", "arrow2")) {
+
+            leftArrow = document.createElement("a");
+            leftArrow.id = "arrow1";
+            leftArrow.innerHTML = "LEFT";
+            document.body.appendChild(leftArrow);
+
+            rightArrow = document.createElement("a");
+            rightArrow.id = "arrow2";
+            rightArrow.innerHTML = "RIGHT";
+            document.body.appendChild(rightArrow);
+
+        }
+
+
+
+        moveClips();
+
+
+
+
+        var blocks = Math.floor(screen.width / 400);
+
+        addDots(res, blocks);
+
     };
 
+
     function emptyList() {
-        var section = document.getElementById("main");
+        var section = document.getElementById("second");
         if (section) {
+
             section.innerHTML = " ";
+
+            if (footer) {
+                footer.innerHTML = " ";
+            }
+
         } else {
             return;
         }
@@ -203,76 +238,91 @@
     }
 
 
+
+
+
     function addFooter() {
-        footer = document.createElement("footer");
-        document.body.appendChild(footer);
 
-    }
-
-
-    function addArrows() {
-
-        leftArrow = document.createElement("a");
-        leftArrow.id = "arrow1";
-        leftArrow.innerHTML = "LEFT";
-        document.body.appendChild(leftArrow);
-
-        rightArrow = document.createElement("a");
-        rightArrow.id = "arrow2";
-        rightArrow.innerHTML = "RIGHT";
-        document.body.appendChild(rightArrow);
-    }
-
-
-    function screenSize() {
-        var s = document.innerHTML = "Screen width is " + screen.width; // думаю что лучше делать через проценты, тк будет сразу адаптация и не нужно писать проверку
-        console.log(s);
+            footer = document.createElement("footer");
+            document.body.appendChild(footer);
 
     }
 
 
 
-function moveClips() {
+    function addDots(res, blocks) {
 
-    var counter = 0;
+        if (blocks == 0){
+            blocks = 1
+        }
 
-    arrow1.onclick = function() {
+        for (var i = 0; i < res/blocks; i++) {
+        
+        var drop = document.createElement("a")
+        footer.appendChild(drop);
+        
+        }
+    
+    }
 
-        var section = document.getElementById("second");
-        if (section.style.marginLeft === '0%') {
 
 
-        } else {
-            --counter
-            section.style.marginLeft = (-98 * counter) + '%';
+
+    function moveClips() {
+
+        var counter = 0;
+
+        var pages = -196;
+
+
+        arrow1.onclick = function() {
+
+            var section = document.getElementById("second");
+
+            if (section.style.marginLeft === '0%') {
+
+                var left = document.getElementById("arrow1");
+                left.style.display = "none";
+
+
+
+            } else {
+                --counter
+                section.style.marginLeft = (-98 * counter) + '%';
+
+            }
+
+        }
+
+
+
+        arrow2.onclick = function() {
+
+            var section = document.getElementById("second");
+
+
+            var left = document.getElementById("arrow1");
+            left.style.display = "block";
+
+
+
+            if (section.style.marginLeft === (pages) + '%') {
+
+
+                var PageToken = "&pageToken=" + nextPageToken;
+                searching(searchtext, PageToken);
+
+
+
+            } else {
+                ++counter
+                section.style.marginLeft = (-98 * counter) + '%';
+
+            }
 
         }
 
     }
-
-
-    arrow2.onclick = function() {
-        var section = document.getElementById("second");
-        
-        
-         if (section.style.marginLeft === '-392%') {
-
-           var page = info_2; 
-           console.log(page)
-
-           searching(page);
-
-
-
-        } else {
-            ++counter
-            section.style.marginLeft = (-98 * counter) + '%';
-
-        }
-
-    }
-
-}
 
 
 
@@ -280,10 +330,6 @@ function moveClips() {
     addInput();
     addFooter();
 
-    screenSize()
-
-    addArrows();
-    moveClips();
 
 
 })();
