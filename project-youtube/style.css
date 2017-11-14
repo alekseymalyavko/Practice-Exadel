@@ -54,7 +54,7 @@ body{
     padding-right: 40px;
 }
 
-.img-des {
+#img-des {
     min-width: 400px;
     max-width: 400px;
     background-color: #fff;
@@ -66,7 +66,7 @@ body{
 
 }
 
-.img-des h1{
+#img-des h1{
 
 }
 
@@ -159,7 +159,7 @@ footer a:active{
     background-color: red;
 }
 
-#arrow1{
+#arrowL{
     float: left;
     position: fixed;
     top: 40%;
@@ -171,7 +171,7 @@ footer a:active{
 
 }
 
-#arrow2{
+#arrowR{
     float: right;
     position: fixed;
     top: 40%;

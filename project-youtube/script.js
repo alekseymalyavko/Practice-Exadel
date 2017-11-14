@@ -4,8 +4,10 @@
     var videoItems = [];
     var nextPage = "";
     var nextPageToken = [];
-    var blocks = "";
+    var maxInlineVideos = "";
+    var minVideoWidth = 400;
     var res = 10;
+    var screenWidth = screen.width;
 
 
     var header = document.createElement("header");
@@ -160,7 +162,7 @@
 
 
             var firstDiv = document.createElement("div");
-            firstDiv.className = "img-des";
+            firstDiv.id = "img-des";
             sectionSearch.appendChild(firstDiv);
 
 
@@ -193,15 +195,15 @@
         }
 
 
-        if (!document.getElementById("arrow1", "arrow2")) {
+        if (!document.getElementById("arrowL", "arrowR")) {
 
             leftArrow = document.createElement("a");
-            leftArrow.id = "arrow1";
+            leftArrow.id = "arrowL";
             leftArrow.innerHTML = "LEFT";
             document.body.appendChild(leftArrow);
 
             rightArrow = document.createElement("a");
-            rightArrow.id = "arrow2";
+            rightArrow.id = "arrowR";
             rightArrow.innerHTML = "RIGHT";
             document.body.appendChild(rightArrow);
 
@@ -214,11 +216,22 @@
 
 
 
-        var blocks = Math.floor(screen.width / 400);
+        var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
 
-        addDots(res, blocks);
+        var paddings = 10;
+
+        var videoWidth = (screenWidth - (maxInlineVideos * 2 * paddings) / maxInlineVideos);
+
+        console.log(videoWidth)
+
+
+
+        addDots(res, maxInlineVideos);
 
     };
+
+
+
 
 
     function emptyList() {
@@ -243,26 +256,56 @@
 
     function addFooter() {
 
-            footer = document.createElement("footer");
-            document.body.appendChild(footer);
+        footer = document.createElement("footer");
+        footer.id = "footer";
+        document.body.appendChild(footer);
 
     }
 
 
 
-    function addDots(res, blocks) {
 
-        if (blocks == 0){
-            blocks = 1
+    // у меня вопрос, как передать айди элемента, на который идет клик, в функцию?
+
+    function addDots(res, maxInlineVideos) {
+
+        if (maxInlineVideos == 0) {
+            maxInlineVideos = 1
         }
 
-        for (var i = 0; i < res/blocks; i++) {
-        
-        var drop = document.createElement("a")
-        footer.appendChild(drop);
-        
+        for (var i = 0; i < res / maxInlineVideos; i++) {
+            var dots = document.createElement("a")
+            dots.className = "drop";
+            dots.id = [i + 1];
+            footer.appendChild(dots);
         }
-    
+
+
+        moveDots()
+    }
+
+
+
+    function moveDots() {
+
+
+        var dot = document.getElementsByClassName("drop");
+        var dotCount = dot.length;
+        for (var i = 0; i <= dotCount; i += 1) {
+
+            dot[i].onclick = function() {                                                   //          выдает ошибку!!!!!!!!!
+
+                var counter = this.id;
+
+
+                var section = document.getElementById("second");
+
+                --counter
+                section.style.marginLeft = (-counter) * screenWidth + "px";
+
+            };
+        }
+
     }
 
 
@@ -270,25 +313,22 @@
 
     function moveClips() {
 
-        var counter = 0;
-
-        var pages = -196;
+        var screenCounter = 0;
 
 
-        arrow1.onclick = function() {
+        arrowL.onclick = function left() {
 
             var section = document.getElementById("second");
 
-            if (section.style.marginLeft === '0%') {
+            if (section.style.marginLeft === '0px') {
 
-                var left = document.getElementById("arrow1");
+                var left = document.getElementById("arrowL");
                 left.style.display = "none";
 
 
-
             } else {
-                --counter
-                section.style.marginLeft = (-98 * counter) + '%';
+                --screenCounter
+                section.style.marginLeft = (-screenCounter) * screenWidth + "px";
 
             }
 
@@ -296,29 +336,30 @@
 
 
 
-        arrow2.onclick = function() {
+        arrowR.onclick = function right() {
 
             var section = document.getElementById("second");
 
 
-            var left = document.getElementById("arrow1");
+            var left = document.getElementById("arrowL");
             left.style.display = "block";
 
 
+            var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
 
-            if (section.style.marginLeft === (pages) + '%') {
+            var blocks = (document.getElementById('second').childNodes.length - 1)
+            console.log(blocks)
 
+
+
+            if ((screenCounter + 1) * maxInlineVideos + maxInlineVideos > blocks) {
 
                 var PageToken = "&pageToken=" + nextPageToken;
                 searching(searchtext, PageToken);
-
-
-
-            } else {
-                ++counter
-                section.style.marginLeft = (-98 * counter) + '%';
-
             }
+
+            ++screenCounter
+            section.style.marginLeft = ((-screenCounter) * screenWidth + "px");
 
         }
 
