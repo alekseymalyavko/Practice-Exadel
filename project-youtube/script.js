@@ -217,11 +217,8 @@
 
 
         var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
-
         var paddings = 10;
-
         var videoWidth = (screenWidth - (maxInlineVideos * 2 * paddings) / maxInlineVideos);
-
         console.log(videoWidth)
 
 
@@ -265,8 +262,6 @@
 
 
 
-    // у меня вопрос, как передать айди элемента, на который идет клик, в функцию?
-
     function addDots(res, maxInlineVideos) {
 
         if (maxInlineVideos == 0) {
@@ -276,7 +271,7 @@
         for (var i = 0; i < res / maxInlineVideos; i++) {
             var dots = document.createElement("a")
             dots.className = "drop";
-            dots.id = [i + 1];
+            dots.id = [i+1];
             footer.appendChild(dots);
         }
 
@@ -290,14 +285,13 @@
 
 
         var dot = document.getElementsByClassName("drop");
-        var dotCount = dot.length;
-        for (var i = 0; i <= dotCount; i += 1) {
+        var dotCount = dot.length-1;
+        for (var i = 0; i <= dotCount; i++) {
 
-            dot[i].onclick = function() {                                                   //          выдает ошибку!!!!!!!!!
+
+            dot[i].onclick = function () {                               
 
                 var counter = this.id;
-
-
                 var section = document.getElementById("second");
 
                 --counter
