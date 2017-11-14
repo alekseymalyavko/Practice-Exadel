@@ -1,4 +1,6 @@
-(function() {
+(function () {
+
+    "use strict"
 
     var searchtext = "";
     var videoItems = [];
@@ -190,43 +192,36 @@
             infoDiv.innerHTML = "<span>" + "Views: " + videoItems.statistics.viewCount + "</span>" + "<span>" + "Date: " + videoItems.publishDate + "</span>";
             firstDiv.appendChild(infoDiv);
 
-
-
         }
-
 
         if (!document.getElementById("arrowL", "arrowR")) {
 
-            leftArrow = document.createElement("a");
+            var leftArrow = document.createElement("a");
             leftArrow.id = "arrowL";
             leftArrow.innerHTML = "LEFT";
             document.body.appendChild(leftArrow);
 
-            rightArrow = document.createElement("a");
+            var rightArrow = document.createElement("a");
             rightArrow.id = "arrowR";
             rightArrow.innerHTML = "RIGHT";
             document.body.appendChild(rightArrow);
 
         }
 
-
-
         moveClips();
-
-
 
 
         var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
         var paddings = 10;
+
+
         var videoWidth = (screenWidth - (maxInlineVideos * 2 * paddings) / maxInlineVideos);
         console.log(videoWidth)
-
 
 
         addDots(res, maxInlineVideos);
 
     };
-
 
 
 
@@ -249,16 +244,13 @@
 
 
 
-
-
     function addFooter() {
 
-        footer = document.createElement("footer");
+        var footer = document.createElement("footer");
         footer.id = "footer";
         document.body.appendChild(footer);
 
     }
-
 
 
 
@@ -271,11 +263,10 @@
         for (var i = 0; i < res / maxInlineVideos; i++) {
             var dots = document.createElement("a")
             dots.className = "drop";
-            dots.id = [i+1];
+            dots.id = [i + 1];
             footer.appendChild(dots);
         }
-
-
+        
         moveDots()
     }
 
@@ -285,11 +276,11 @@
 
 
         var dot = document.getElementsByClassName("drop");
-        var dotCount = dot.length-1;
+        var dotCount = dot.length - 1;
         for (var i = 0; i <= dotCount; i++) {
 
 
-            dot[i].onclick = function () {                               
+            dot[i].onclick = function() {
 
                 var counter = this.id;
                 var section = document.getElementById("second");
@@ -310,7 +301,7 @@
         var screenCounter = 0;
 
 
-        arrowL.onclick = function left() {
+        document.getElementById('arrowL').onclick = function () {
 
             var section = document.getElementById("second");
 
@@ -318,7 +309,6 @@
 
                 var left = document.getElementById("arrowL");
                 left.style.display = "none";
-
 
             } else {
                 --screenCounter
@@ -330,10 +320,9 @@
 
 
 
-        arrowR.onclick = function right() {
+        document.getElementById('arrowR').onclick = function () {
 
             var section = document.getElementById("second");
-
 
             var left = document.getElementById("arrowL");
             left.style.display = "block";
@@ -359,12 +348,8 @@
 
     }
 
-
-
     addLogo();
     addInput();
     addFooter();
-
-
 
 })();
