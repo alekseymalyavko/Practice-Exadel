@@ -7,8 +7,8 @@
     var nextPage = "";
     var nextPageToken = [];
     var maxInlineVideos = "";
-    var minVideoWidth = 400;
-    var res = 10;
+    var minVideoWidth = 300;
+    var res = 12;
     var screenWidth = screen.width;
 
 
@@ -73,9 +73,9 @@
         var url = "";
 
         if (PageToken) {
-            url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10" + PageToken + "&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
+            url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12" + PageToken + "&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
         } else {
-            url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
+            url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
         }
 
         xhr.open("GET", url, true);
@@ -88,7 +88,7 @@
 
         var xhr = new XMLHttpRequest(search);
         xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
+            if (xhr.readyState === 4) {
 
                 var info = JSON.parse(xhr.response);
                 var info1 = Object.values(info.items);
@@ -211,12 +211,20 @@
         moveClips();
 
 
-        var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
-        var paddings = 10;
+        var maxInlineVideos = Math.floor((screenWidth / minVideoWidth));
+        var paddings = 15;
 
+        if (maxInlineVideos == 0) {
+            maxInlineVideos = 1
+        }
 
-        var videoWidth = (screenWidth - (maxInlineVideos * 2 * paddings) / maxInlineVideos);
-        console.log(videoWidth)
+        var videoWidth = (screenWidth - (maxInlineVideos * 2 * paddings)) / maxInlineVideos;
+        var container = document.querySelectorAll('#img-des');
+
+        for (var i = 0; i < container.length; i++){
+        container[i].style.width = videoWidth + 'px';
+        }
+
 
 
         addDots(res, maxInlineVideos);
@@ -256,17 +264,23 @@
 
     function addDots(res, maxInlineVideos) {
 
-        if (maxInlineVideos == 0) {
-            maxInlineVideos = 1
-        }
+        console.log(maxInlineVideos);
 
-        for (var i = 0; i < res / maxInlineVideos; i++) {
+        var dotsOnPage = document.querySelectorAll('.drop').length;
+        var ogr = (res / maxInlineVideos);
+
+        if (dotsOnPage > 0) {
+          var ogr = dotsOnPage + ogr;      
+        }
+        
+
+        for (var i = dotsOnPage; i < ogr; i++) {
+
             var dots = document.createElement("a")
             dots.className = "drop";
             dots.id = [i + 1];
             footer.appendChild(dots);
-        }
-        
+        }      
         moveDots()
     }
 
@@ -274,10 +288,11 @@
 
     function moveDots() {
 
-
+        
         var dot = document.getElementsByClassName("drop");
         var dotCount = dot.length - 1;
-        for (var i = 0; i <= dotCount; i++) {
+
+        for ( var i = 0 ; i <= dotCount; i++) {
 
 
             dot[i].onclick = function() {
@@ -290,7 +305,6 @@
 
             };
         }
-
     }
 
 
@@ -315,7 +329,6 @@
                 section.style.marginLeft = (-screenCounter) * screenWidth + "px";
 
             }
-
         }
 
 
@@ -345,7 +358,6 @@
             section.style.marginLeft = ((-screenCounter) * screenWidth + "px");
 
         }
-
     }
 
     addLogo();
