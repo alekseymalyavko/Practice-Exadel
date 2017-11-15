@@ -94,8 +94,6 @@
                 var info1 = Object.values(info.items);
 
                 addDescriptions(info1);
-
-
             }
         }
 
@@ -201,6 +199,8 @@
             leftArrow.innerHTML = "LEFT";
             document.body.appendChild(leftArrow);
 
+
+
             var rightArrow = document.createElement("a");
             rightArrow.id = "arrowR";
             rightArrow.innerHTML = "RIGHT";
@@ -270,17 +270,26 @@
         var ogr = (res / maxInlineVideos);
 
         if (dotsOnPage > 0) {
-          var ogr = dotsOnPage + ogr;      
+          var ogr = dotsOnPage + ogr;             
         }
         
 
         for (var i = dotsOnPage; i < ogr; i++) {
 
             var dots = document.createElement("a")
-            dots.className = "drop";
+            dots.className = "drop tooltip";
             dots.id = [i + 1];
             footer.appendChild(dots);
+
+
+            var tooltip = document.createElement("span")
+            tooltip.className = "tooltiptext"
+            tooltip.innerHTML = "<p>" + [i + 1] + "</p>";
+            dots.appendChild(tooltip);
+
+
         }      
+        
         moveDots()
     }
 
@@ -289,6 +298,9 @@
     function moveDots() {
 
         
+
+
+
         var dot = document.getElementsByClassName("drop");
         var dotCount = dot.length - 1;
 
@@ -303,8 +315,24 @@
                 --counter
                 section.style.marginLeft = (-counter) * screenWidth + "px";
 
+
+
+
+            var section = document.getElementById("second");
+
+            if (section.style.marginLeft < '0px'){
+            var left = document.getElementById("arrowL");
+            left.style.display = "block";
+            }else{
+                var left = document.getElementById("arrowL");
+                left.style.display = "none";
+            }
+
             };
         }
+
+
+
     }
 
 
@@ -313,6 +341,11 @@
     function moveClips() {
 
         var screenCounter = 0;
+
+
+      
+
+
 
 
         document.getElementById('arrowL').onclick = function () {
@@ -325,6 +358,9 @@
                 left.style.display = "none";
 
             } else {
+
+
+
                 --screenCounter
                 section.style.marginLeft = (-screenCounter) * screenWidth + "px";
 
