@@ -108,9 +108,7 @@
         for (var i = 0; i < videoItems.length; ++i) {
             videoItems[i].statistics = info1[i].statistics;
         }
-
         addContent(videoItems);
-
     }
 
 
@@ -206,10 +204,10 @@
             rightArrow.innerHTML = "RIGHT";
             document.body.appendChild(rightArrow);
 
-
-
+            
             moveClips();
 
+           
         }
 
 
@@ -234,7 +232,7 @@
         addDots(res, maxInlineVideos);
 
 
-        moveSection ()
+        
 
     };
 
@@ -254,6 +252,8 @@
         } else {
             return;
         }
+
+        // delete
 
     }
 
@@ -316,7 +316,7 @@
 
 
 
-                active(counter);
+                activeDot(counter);
 
 
 
@@ -351,12 +351,12 @@
         var screenCounter = 0;
 
         if (counterDots) {
-
             screenCounter += counterDots;
-
         }
 
-        document.getElementById('arrowL').onclick = function() {
+
+
+        var left = function left() {
 
             var section = document.getElementById("second");
 
@@ -372,12 +372,15 @@
 
             }
 
-            active(screenCounter + 1)
+            activeDot(screenCounter + 1)
         }
 
 
 
-        document.getElementById('arrowR').onclick = function() {
+        document.getElementById('arrowL').onclick = left
+
+
+        var right = function right() {
 
             var section = document.getElementById("second");
 
@@ -398,13 +401,20 @@
             ++screenCounter
             section.style.marginLeft = ((-screenCounter) * screenWidth + "px");
 
-            active(screenCounter + 1)
+            activeDot(screenCounter + 1)
         }
+
+        document.getElementById('arrowR').onclick = right;
+
+
+        moveSection (left, right)
+
 
     }
 
 
-    function active(counter) {
+
+    function activeDot(counter) {
 
         var list = document.querySelectorAll("footer>a");
         list.forEach(function(a) {
@@ -417,12 +427,40 @@
     }
 
 
-    function moveSection () { 
 
-    document.getElementById("second").onclick = function() {
-        console.log("X= " + event.clientX)}
+    function moveSection (left, right) { 
 
-}
+        var x = '';
+        var y = '';
+
+
+        document.getElementById("second").addEventListener("mousedown", function(){
+                x = event.clientX
+    });
+        document.getElementById("second").addEventListener("mouseup", function(){
+                y = event.clientX
+                coordinate()
+    
+    });
+            function coordinate(){
+
+                var delta = x - y
+
+                if (delta === 0) {
+                    return
+                }
+                // var section = document.getElementById("second");
+                // section.style.marginLeft = -delta + "px";
+
+                if (delta > 0) {
+                      right()       
+                }else
+                      left()
+            }      
+    }
+
+
+
 
 
 
