@@ -12,7 +12,6 @@
     var res = 12;
     var screenWidth = document.body.clientWidth;
 
-
     var header = document.createElement("header");
     document.body.appendChild(header);
 
@@ -23,7 +22,6 @@
 
         header.appendChild(logo);
     }
-
 
     function addInput() {
 
@@ -40,13 +38,10 @@
                 searchtext = e.target.value;
 
                 searching(searchtext);
-
             }
         }
         header.appendChild(input);
-
     };
-
 
     function searching(search, PageToken) {
         var xhr = new XMLHttpRequest(search);
@@ -57,9 +52,7 @@
                 var info = JSON.parse(xhr.response);
                 var info1 = Object.values(info.items);
 
-
                 nextPageToken = info.nextPageToken;
-
 
                 if (info1) {
                     var str = getClipIds(info1);
@@ -70,20 +63,15 @@
                 }
             }
         }
-
         var url = "";
-
         if (PageToken) {
             url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12" + PageToken + "&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
         } else {
             url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
         }
-
         xhr.open("GET", url, true);
         xhr.send();
     };
-
-
 
     function statistics(str) {
 
@@ -97,12 +85,9 @@
                 addDescriptions(info1);
             }
         }
-
         xhr.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=" + str + "&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A", true);
         xhr.send();
-
     };
-
 
     function addDescriptions(info1) {
 
@@ -112,13 +97,10 @@
         addContent(videoItems);
     }
 
-
-
     function getClipIds(items) {
 
         var clipList = [];
         var views = [];
-
 
         for (var i = 0; i < items.length; i++) {
 
@@ -138,27 +120,21 @@
                 publishDate: (date.getMonth() + 1) + "." + date.getDate() + "." + date.getFullYear()
             });
         }
-
         videoItems = clipList;
         console.log(videoItems)
 
         return views.join(',');
-
     }
-
 
     var sectionSearch = document.createElement("section");
     sectionSearch.id = "second";
     document.body.appendChild(sectionSearch);
 
-
     function addContent(info1) {
-
 
         for (var i = 0; i < info1.length; i++) {
 
             var videoItems = info1[i];
-
 
             var firstDiv = document.createElement("div");
             firstDiv.id = "img-des";
@@ -188,7 +164,6 @@
             infoDiv.id = "description_stats";
             infoDiv.innerHTML = "<span>" + "Views: " + videoItems.statistics.viewCount + "</span>" + "<span>" + "Date: " + videoItems.publishDate + "</span>";
             firstDiv.appendChild(infoDiv);
-
         }
 
         if (!document.getElementById("arrowL", "arrowR")) {
@@ -205,14 +180,8 @@
             rightArrow.innerHTML = "RIGHT";
             document.body.appendChild(rightArrow);
 
-            
-            moveClips();
-
-           
+            moveClips();  
         }
-
-
-
 
         var maxInlineVideos = Math.floor((screenWidth / minVideoWidth));
         var paddings = 15;
@@ -227,48 +196,26 @@
         for (var i = 0; i < container.length; i++) {
             container[i].style.width = videoWidth + 'px';
         }
-
-
-
         addDots(res, maxInlineVideos);
-
-
-        
-
     };
-
-
-
 
     function emptyList() {
         var section = document.getElementById("second");
         if (section) {
-
             section.innerHTML = " ";
-
             if (footer) {
                 footer.innerHTML = " ";
             }
-
         } else {
             return;
         }
-
-        // delete
-
     }
 
-
-
     function addFooter() {
-
         var footer = document.createElement("footer");
         footer.id = "footer";
         document.body.appendChild(footer);
-
     }
-
-
 
     function addDots(res, maxInlineVideos) {
 
@@ -279,7 +226,6 @@
         if (dotsOnPage > 0) {
             var ogr = dotsOnPage + ogr;
         }
-
 
         for (var i = dotsOnPage; i < ogr; i++) {
 
@@ -293,16 +239,11 @@
             tooltip.className = "tooltiptext";
             tooltip.innerHTML = "<p>" + [i + 1] + "</p>";
             dots.appendChild(tooltip);
-
         }
 
         var activeDrop = document.getElementById("" + dots.id - res / maxInlineVideos + 1 + "").classList.add("active");
-
-
-        moveDots()
+        moveDots();
     }
-
-
 
     function moveDots() {
 
@@ -315,11 +256,7 @@
 
                 var counter = this.id;
 
-
-
                 activeDot(counter);
-
-
 
                 var section = document.getElementById("second");
 
@@ -328,7 +265,6 @@
 
 
                 moveClips(counterDots);
-
 
                 var section = document.getElementById("second");
 
@@ -340,12 +276,9 @@
                     left.style.display = "none";
                 }
 
-            };
+            }
         }
     }
-
-
-
 
     function moveClips(counterDots) {
 
@@ -354,8 +287,6 @@
         if (counterDots) {
             screenCounter += counterDots;
         }
-
-
 
         var left = function left() {
 
@@ -376,7 +307,7 @@
             activeDot(screenCounter + 1);
         }
 
-        document.getElementById('arrowL').onclick = left
+        document.getElementById('arrowL').onclick = left;
 
 
         var right = function right() {
@@ -406,21 +337,16 @@
         moveSection (left, right);
     }
 
-
-
     function activeDot(counter) {
 
         var list = document.querySelectorAll("footer>a");
         list.forEach(function(a) {
 
-            if (a.id == counter) a.classList.add("active");
+            if (a.id == counter) a.classList.add("active");         // необходимо == тк преобразовываем к одному виду типа данных(строка и число)
 
             else a.classList.remove("active");
-
         });
     }
-
-
 
     function moveSection (left, right) { 
 
@@ -432,14 +358,17 @@
                 x = event.clientX;
     });
         document.getElementById("second").addEventListener("mouseup", function(){
-                y = event.clientX;
+                y = event.clientX;              
                 coordinate();
     
     });
             function coordinate(){
 
-                var delta = x - y
-
+                var delta = x - y;
+                
+                var section = document.getElementById("second");
+                var ff = section.style.marginLeft += x +'px';
+                
                 if (delta === 0) {
                     return;
                 }
@@ -449,11 +378,6 @@
                       left();
             }      
     }
-
-
-
-
-
 
     addLogo();
     addInput();
