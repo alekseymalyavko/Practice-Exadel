@@ -256,7 +256,7 @@
 
                 var counter = this.id;
 
-                activeDot(counter);
+                activeDot(parseInt(counter));
 
                 var section = document.getElementById("second");
 
@@ -341,8 +341,8 @@
 
         var list = document.querySelectorAll("footer>a");
         list.forEach(function(a) {
-
-            if (a.id == counter) a.classList.add("active");         // необходимо == тк преобразовываем к одному виду типа данных(строка и число)
+            
+            if (parseInt(a.id) === counter) a.classList.add("active");         
 
             else a.classList.remove("active");
         });
@@ -352,7 +352,6 @@
 
         var x = '';
         var y = '';
-
 
         document.getElementById("second").addEventListener("mousedown", function(){
                 x = event.clientX;
