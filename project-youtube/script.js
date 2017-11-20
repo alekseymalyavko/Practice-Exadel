@@ -241,7 +241,7 @@
             dots.appendChild(tooltip);
         }
 
-        var activeDrop = document.getElementById("" + dots.id - res / maxInlineVideos + 1 + "").classList.add("active");
+        var activeDrop = document.getElementById("" + parseInt(dots.id) - Math.ceil(res / maxInlineVideos) + 1 + "").classList.add("active");
         moveDots();
     }
 
@@ -341,7 +341,7 @@
 
         var list = document.querySelectorAll("footer>a");
         list.forEach(function(a) {
-            
+
             if (parseInt(a.id) === counter) a.classList.add("active");         
 
             else a.classList.remove("active");
@@ -364,17 +364,15 @@
             function coordinate(){
 
                 var delta = x - y;
-                
-                var section = document.getElementById("second");
-                var ff = section.style.marginLeft += x +'px';
-                
                 if (delta === 0) {
                     return;
                 }
-                if (delta > 0) {
+                var deltaProcent = delta/screenWidth*100;
+                if (deltaProcent > 20) {
                       right();       
-                }else
+                } else if (deltaProcent < -20){
                       left();
+                }
             }      
     }
 

@@ -61,7 +61,9 @@ body{
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    min-width: 300px;  
+
+    /*min-width: 300px; */ 
+    
     background-color: #fff;
     margin-top: 10%;
     margin: 15px;
@@ -169,6 +171,7 @@ footer a:active{
 }
 
 #arrowL{
+    border: 2px solid black;
     float: left;
     position: fixed;
     top: 40%;
@@ -181,6 +184,7 @@ footer a:active{
 }
 
 #arrowR{
+    border: 2px solid black;
     float: right;
     position: fixed;
     top: 40%;
