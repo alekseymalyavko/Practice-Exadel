@@ -1,4 +1,5 @@
-(function() {
+
+    (function() {
 
     "use strict"
 
@@ -217,7 +218,7 @@
         var paddings = 15;
 
         if (maxInlineVideos === 0) {
-            maxInlineVideos = 1
+            maxInlineVideos = 1;
         }
 
         var videoWidth = (screenWidth - (maxInlineVideos * 2 * paddings)) / maxInlineVideos;
@@ -289,7 +290,7 @@
 
 
             var tooltip = document.createElement("span")
-            tooltip.className = "tooltiptext"
+            tooltip.className = "tooltiptext";
             tooltip.innerHTML = "<p>" + [i + 1] + "</p>";
             dots.appendChild(tooltip);
 
@@ -372,10 +373,8 @@
 
             }
 
-            activeDot(screenCounter + 1)
+            activeDot(screenCounter + 1);
         }
-
-
 
         document.getElementById('arrowL').onclick = left
 
@@ -388,9 +387,7 @@
             left.style.display = "block";
 
             var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
-            var blocks = (document.getElementById('second').childNodes.length - 1)
-            console.log(blocks)
-
+            var blocks = (document.getElementById('second').childNodes.length - 1);
 
             if ((screenCounter + 1) * maxInlineVideos + maxInlineVideos > blocks) {
 
@@ -401,15 +398,12 @@
             ++screenCounter
             section.style.marginLeft = ((-screenCounter) * screenWidth + "px");
 
-            activeDot(screenCounter + 1)
+            activeDot(screenCounter + 1);
         }
 
         document.getElementById('arrowR').onclick = right;
 
-
-        moveSection (left, right)
-
-
+        moveSection (left, right);
     }
 
 
@@ -435,11 +429,11 @@
 
 
         document.getElementById("second").addEventListener("mousedown", function(){
-                x = event.clientX
+                x = event.clientX;
     });
         document.getElementById("second").addEventListener("mouseup", function(){
-                y = event.clientX
-                coordinate()
+                y = event.clientX;
+                coordinate();
     
     });
             function coordinate(){
@@ -447,15 +441,12 @@
                 var delta = x - y
 
                 if (delta === 0) {
-                    return
+                    return;
                 }
-                // var section = document.getElementById("second");
-                // section.style.marginLeft = -delta + "px";
-
                 if (delta > 0) {
-                      right()       
+                      right();       
                 }else
-                      left()
+                      left();
             }      
     }
 
