@@ -234,7 +234,6 @@
             dots.id = [i + 1];
             footer.appendChild(dots);
 
-
             var tooltip = document.createElement("span")
             tooltip.className = "tooltiptext";
             tooltip.innerHTML = "<p>" + [i + 1] + "</p>";
@@ -261,21 +260,19 @@
                 var section = document.getElementById("second");
 
                 var counterDots = --counter;
-                section.style.marginLeft = (-counter) * screenWidth + "px";
-
+                section.style.transform = "translatex(" +(-counter) * screenWidth + "px)";  
 
                 moveClips(counterDots);
 
                 var section = document.getElementById("second");
 
-                if (section.style.marginLeft < '0px') {
+                if (section.style.transform < 'translateX(0px)') {
                     var left = document.getElementById("arrowL");
                     left.style.display = "block";
                 } else {
                     var left = document.getElementById("arrowL");
                     left.style.display = "none";
                 }
-
             }
         }
     }
@@ -288,11 +285,13 @@
             screenCounter += counterDots;
         }
 
+        
+
         var left = function left() {
 
             var section = document.getElementById("second");
 
-            if (section.style.marginLeft === '0px') {
+            if (section.style.transform === 'translateX(0px)') {
 
                 var left = document.getElementById("arrowL");
                 left.style.display = "none";
@@ -300,7 +299,7 @@
             } else {
 
                 --screenCounter
-                section.style.marginLeft = (-screenCounter) * screenWidth + "px";
+                section.style.transform = "translatex(" + (-screenCounter) * screenWidth +  "px)";    
 
             }
 
@@ -310,6 +309,8 @@
         document.getElementById('arrowL').onclick = left;
 
 
+
+
         var right = function right() {
 
             var section = document.getElementById("second");
@@ -317,8 +318,10 @@
             var left = document.getElementById("arrowL");
             left.style.display = "block";
 
+
             var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
             var blocks = (document.getElementById('second').childNodes.length - 1);
+
 
             if ((screenCounter + 1) * maxInlineVideos + maxInlineVideos > blocks) {
 
@@ -327,7 +330,7 @@
             }
 
             ++screenCounter
-            section.style.marginLeft = ((-screenCounter) * screenWidth + "px");
+            section.style.transform = "translatex(" + (-screenCounter) * screenWidth +  "px)";
 
             activeDot(screenCounter + 1);
         }
