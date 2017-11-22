@@ -1,8 +1,8 @@
-
-    (function() {
+(function() {
 
     "use strict"
 
+    var counterDots = 0;
     var searchtext = "";
     var videoItems = [];
     var nextPage = "";
@@ -10,6 +10,7 @@
     var maxInlineVideos = "";
     var minVideoWidth = 300;
     var res = 12;
+    var totalClipsCounter = 0;
     var screenWidth = document.body.clientWidth;
 
     var header = document.createElement("header");
@@ -69,6 +70,8 @@
         } else {
             url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&type=video&key=AIzaSyC3nnobkH5nwPBr52O9zHKK2ZWgQbQT86A&q=" + search;
         }
+
+        totalClipsCounter = totalClipsCounter + 12;
         xhr.open("GET", url, true);
         xhr.send();
     };
@@ -180,7 +183,7 @@
             rightArrow.innerHTML = "RIGHT";
             document.body.appendChild(rightArrow);
 
-            moveClips();  
+            addMoveClipsHandler();
         }
 
         var maxInlineVideos = Math.floor((screenWidth / minVideoWidth));
@@ -203,6 +206,9 @@
         var section = document.getElementById("second");
         if (section) {
             section.innerHTML = " ";
+
+            counterDots=0;
+
             if (footer) {
                 footer.innerHTML = " ";
             }
@@ -217,17 +223,19 @@
         document.body.appendChild(footer);
     }
 
+
+
+
+
     function addDots(res, maxInlineVideos) {
 
-        var dotsOnPage = document.querySelectorAll('.drop').length;
+        var dotsOnPage1 = document.querySelectorAll('.drop').length;
+
+        var dotsOnPage2 = Math.ceil((totalClipsCounter / maxInlineVideos)); // current dots counter
 
         var ogr = (res / maxInlineVideos);
 
-        if (dotsOnPage > 0) {
-            var ogr = dotsOnPage + ogr;
-        }
-
-        for (var i = dotsOnPage; i < ogr; i++) {
+        for (var i = dotsOnPage1; i < dotsOnPage2; i++) {
 
             var dots = document.createElement("a")
             dots.className = "drop tooltip";
@@ -240,9 +248,12 @@
             dots.appendChild(tooltip);
         }
 
-        var activeDrop = document.getElementById("" + parseInt(dots.id) - Math.ceil(res / maxInlineVideos) + 1 + "").classList.add("active");
+        var activeDrop = document.getElementById(String(parseInt(dots.id) - Math.ceil(res / maxInlineVideos) + 1)).classList.add("active");
+        
         moveDots();
     }
+
+
 
     function moveDots() {
 
@@ -251,7 +262,8 @@
 
         for (var i = 0; i <= dotCount; i++) {
 
-            dot[i].onclick = function() {
+            dot[i].onclick = function () {
+
 
                 var counter = this.id;
 
@@ -259,13 +271,19 @@
 
                 var section = document.getElementById("second");
 
-                var counterDots = --counter;
-                section.style.transform = "translatex(" +(-counter) * screenWidth + "px)";  
+                counterDots = --counter;
+                section.style.transform = "translatex(" + (-counter) * screenWidth + "px)";
 
-                moveClips(counterDots);
+
+                var maxInlineVideos = Math.floor((screenWidth / minVideoWidth));
+                var blocks = (document.getElementById('second').childNodes.length - 1);
+
+                if ((counterDots) * maxInlineVideos + maxInlineVideos > blocks) {
+                var PageToken = "&pageToken=" + nextPageToken;
+                searching(searchtext, PageToken);
+                }
 
                 var section = document.getElementById("second");
-
                 if (section.style.transform < 'translateX(0px)') {
                     var left = document.getElementById("arrowL");
                     left.style.display = "block";
@@ -277,17 +295,18 @@
         }
     }
 
-    function moveClips(counterDots) {
 
-        var screenCounter = 0;
 
-        if (counterDots) {
-            screenCounter += counterDots;
-        }
 
-        
 
-        var left = function left() {
+
+
+
+    function addMoveClipsHandler() {
+
+        console.log(counterDots);
+
+        var left = function () {
 
             var section = document.getElementById("second");
 
@@ -298,46 +317,42 @@
 
             } else {
 
-                --screenCounter
-                section.style.transform = "translatex(" + (-screenCounter) * screenWidth +  "px)";    
+                --counterDots
+                section.style.transform = "translatex(" + (-counterDots) * screenWidth + "px)";
 
             }
-
-            activeDot(screenCounter + 1);
+                console.log('screenCounter', counterDots);
+            activeDot(counterDots + 1);
         }
 
         document.getElementById('arrowL').onclick = left;
 
 
 
-
-        var right = function right() {
+        var right = function () {
 
             var section = document.getElementById("second");
 
             var left = document.getElementById("arrowL");
             left.style.display = "block";
 
-
             var maxInlineVideos = Math.floor(screenWidth / minVideoWidth);
             var blocks = (document.getElementById('second').childNodes.length - 1);
 
-
-            if ((screenCounter + 1) * maxInlineVideos + maxInlineVideos > blocks) {
-
+            if ((counterDots + 1) * maxInlineVideos + maxInlineVideos > blocks) {
                 var PageToken = "&pageToken=" + nextPageToken;
                 searching(searchtext, PageToken);
             }
 
-            ++screenCounter
-            section.style.transform = "translatex(" + (-screenCounter) * screenWidth +  "px)";
+            ++counterDots
+            section.style.transform = "translatex(" + (-counterDots) * screenWidth + "px)";
 
-            activeDot(screenCounter + 1);
+            activeDot(counterDots + 1);
         }
 
         document.getElementById('arrowR').onclick = right;
 
-        moveSection (left, right);
+        addMoveSectionHandlers(left, right);
     }
 
     function activeDot(counter) {
@@ -345,38 +360,40 @@
         var list = document.querySelectorAll("footer>a");
         list.forEach(function(a) {
 
-            if (parseInt(a.id) === counter) a.classList.add("active");         
-
+            if (parseInt(a.id) === counter) {
+                a.classList.add("active");
+            }
             else a.classList.remove("active");
         });
     }
 
-    function moveSection (left, right) { 
+    function addMoveSectionHandlers(left, right) {
 
         var x = '';
         var y = '';
 
-        document.getElementById("second").addEventListener("mousedown", function(){
-                x = event.clientX;
-    });
-        document.getElementById("second").addEventListener("mouseup", function(){
-                y = event.clientX;              
-                coordinate();
-    
-    });
-            function coordinate(){
+        document.getElementById("second").addEventListener("mousedown", function() {
+            x = event.clientX;
+        });
+        document.getElementById("second").addEventListener("mouseup", function() {
+            y = event.clientX;
+            coordinate();
 
-                var delta = x - y;
-                if (delta === 0) {
-                    return;
-                }
-                var deltaProcent = delta/screenWidth*100;
-                if (deltaProcent > 20) {
-                      right();       
-                } else if (deltaProcent < -20){
-                      left();
-                }
-            }      
+        });
+
+        function coordinate() {
+
+            var delta = x - y;
+            if (delta === 0) {
+                return;
+            }
+            var deltaProcent = delta / screenWidth * 100;
+            if (deltaProcent > 20) {
+                right();
+            } else if (deltaProcent < -20) {
+                left();
+            }
+        }
     }
 
     addLogo();
