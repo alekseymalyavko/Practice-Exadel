@@ -208,6 +208,8 @@
             section.innerHTML = " ";
 
             counterDots=0;
+            totalClipsCounter = 0;
+            section.style.transform = "translatex(" + 0 + "px)";
 
             if (footer) {
                 footer.innerHTML = " ";
@@ -231,7 +233,7 @@
 
         var dotsOnPage1 = document.querySelectorAll('.drop').length;
 
-        var dotsOnPage2 = Math.ceil((totalClipsCounter / maxInlineVideos)); // current dots counter
+        var dotsOnPage2 = Math.ceil((totalClipsCounter / maxInlineVideos)); 
 
         var ogr = (res / maxInlineVideos);
 
@@ -304,8 +306,6 @@
 
     function addMoveClipsHandler() {
 
-        console.log(counterDots);
-
         var left = function () {
 
             var section = document.getElementById("second");
@@ -321,7 +321,6 @@
                 section.style.transform = "translatex(" + (-counterDots) * screenWidth + "px)";
 
             }
-                console.log('screenCounter', counterDots);
             activeDot(counterDots + 1);
         }
 
@@ -371,22 +370,32 @@
 
         var x = '';
         var y = '';
+        
+        var delta = x - y;
 
         document.getElementById("second").addEventListener("mousedown", function() {
             x = event.clientX;
+
         });
+          
+
         document.getElementById("second").addEventListener("mouseup", function() {
             y = event.clientX;
             coordinate();
 
-        });
+        }); 
+
+        
 
         function coordinate() {
 
             var delta = x - y;
+
             if (delta === 0) {
                 return;
             }
+       
+
             var deltaProcent = delta / screenWidth * 100;
             if (deltaProcent > 20) {
                 right();
