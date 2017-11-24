@@ -1,0 +1,57 @@
+html{
+	height: 100%;
+}
+body{
+	background: linear-gradient(-150deg, #e24646, #7d1fb4);
+}
+h1{
+	font-size: 40px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+td,th {
+font-size: 25px;
+padding: 3px;
+text-align: left;
+}
+
+th {
+font-size: 32px;
+color: white;
+font-weight: bold;
+}
+
+
+
+#calendar{
+	margin-top: 2%;
+	width: 400px;
+    position: fixed;
+    text-align: center;
+    height: 400px;
+    left: 35%;
+    color:white;
+}
+
+#main{
+	margin-top: 7%;
+}
+
+
+#month{
+	width: 100%;
+	display: flex;
+	font-size: 25px;
+	float: left;
+	margin-bottom: 20px;
+}
+#arrows{
+	margin-left: 55%;
+	float: right;
+}
+
+

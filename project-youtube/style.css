@@ -11,6 +11,7 @@ header{
     position: fixed;
     width: 100%;
     top: 0;
+    z-index: 1;
 }
 
 #logo{
@@ -142,7 +143,7 @@ body{
 footer{
     position: fixed;
     text-align: center;
-    min-height: 55px;
+    min-height: 50px;
     background-color: #320000;
     bottom: 0;
     left: 0;
@@ -156,7 +157,7 @@ footer a {
     border-radius: 15px;
     background-color: white;
     display: inline-block;
-    margin-top : 20px;
+    margin-top : 15px;
     margin-right: 15px;
     cursor: pointer;
     position: relative;

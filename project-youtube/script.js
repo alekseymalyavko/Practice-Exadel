@@ -176,8 +176,6 @@
             leftArrow.innerHTML = "LEFT";
             document.body.appendChild(leftArrow);
 
-
-
             var rightArrow = document.createElement("a");
             rightArrow.id = "arrowR";
             rightArrow.innerHTML = "RIGHT";
@@ -207,7 +205,7 @@
         if (section) {
             section.innerHTML = " ";
 
-            counterDots=0;
+            counterDots = 0;
             totalClipsCounter = 0;
             section.style.transform = "translatex(" + 0 + "px)";
 
@@ -225,15 +223,11 @@
         document.body.appendChild(footer);
     }
 
-
-
-
-
     function addDots(res, maxInlineVideos) {
 
         var dotsOnPage1 = document.querySelectorAll('.drop').length;
 
-        var dotsOnPage2 = Math.ceil((totalClipsCounter / maxInlineVideos)); 
+        var dotsOnPage2 = Math.ceil((totalClipsCounter / maxInlineVideos));
 
         var ogr = (res / maxInlineVideos);
 
@@ -251,20 +245,18 @@
         }
 
         var activeDrop = document.getElementById(String(parseInt(dots.id) - Math.ceil(res / maxInlineVideos) + 1)).classList.add("active");
-        
-        moveDots();
+
+        addMoveDotsHandler();
     }
 
-
-
-    function moveDots() {
+    function addMoveDotsHandler() {
 
         var dot = document.getElementsByClassName("drop");
         var dotCount = dot.length - 1;
 
         for (var i = 0; i <= dotCount; i++) {
 
-            dot[i].onclick = function () {
+            dot[i].onclick = function() {
 
 
                 var counter = this.id;
@@ -281,8 +273,8 @@
                 var blocks = (document.getElementById('second').childNodes.length - 1);
 
                 if ((counterDots) * maxInlineVideos + maxInlineVideos > blocks) {
-                var PageToken = "&pageToken=" + nextPageToken;
-                searching(searchtext, PageToken);
+                    var PageToken = "&pageToken=" + nextPageToken;
+                    searching(searchtext, PageToken);
                 }
 
                 var section = document.getElementById("second");
@@ -299,14 +291,9 @@
 
 
 
-
-
-
-
-
     function addMoveClipsHandler() {
 
-        var left = function () {
+        var left = function() {
 
             var section = document.getElementById("second");
 
@@ -328,7 +315,7 @@
 
 
 
-        var right = function () {
+        var right = function() {
 
             var section = document.getElementById("second");
 
@@ -361,8 +348,7 @@
 
             if (parseInt(a.id) === counter) {
                 a.classList.add("active");
-            }
-            else a.classList.remove("active");
+            } else a.classList.remove("active");
         });
     }
 
@@ -370,22 +356,16 @@
 
         var x = '';
         var y = '';
-        
-        var delta = x - y;
 
         document.getElementById("second").addEventListener("mousedown", function() {
             x = event.clientX;
 
         });
-          
-
         document.getElementById("second").addEventListener("mouseup", function() {
             y = event.clientX;
             coordinate();
 
-        }); 
-
-        
+        });
 
         function coordinate() {
 
@@ -394,8 +374,6 @@
             if (delta === 0) {
                 return;
             }
-       
-
             var deltaProcent = delta / screenWidth * 100;
             if (deltaProcent > 20) {
                 right();
