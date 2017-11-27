@@ -1,49 +1,15 @@
 (function() {
 
-    function addSection() {
-        var calendar = document.createElement("section");
-        calendar.id = "calendar";
-        calendar.innerHTML = "<h1>" + "CALENDARIK" + "</h1>";
-        document.body.appendChild(calendar);
+    var year = 2017;
+    var month = 11;
 
-        var place = document.createElement("div");
-        place.id = "main";
-        calendar.appendChild(place);
-    }
-
+    calendar(year, month);
 
     function calendar(year, month) {
+        var place = document.getElementById("main");
+        var monthVisible = document.getElementById("month");
+        monthVisible.innerHTML = "Месяц " + month + " Год  	" + year;
 
-		var place = document.getElementById("main");
-
-    	var currentMonth = document.createElement("div");
-        currentMonth.id = "month";        
-        currentMonth.innerHTML = month;
-
-        place.appendChild(currentMonth);
-
-        var arrows = document.createElement("div");
-        arrows.id = "arrows";
-        currentMonth.appendChild(arrows);
-
-        var arrowL = document.createElement("span")
-        arrowL.src = "L.png";
-        arrowL.id = "arrowL";
-        
-        arrows.appendChild(arrowL);
-
-        var arrowR = document.createElement("span")
-        arrowR.src = "R.png";
-        arrowR.id = "arrowR";
-        
-        arrows.appendChild(arrowR);
-
-        var dates = document.createElement("div");
-        dates.id = "dates";
-        place.appendChild(dates);
-
-
-        
         var monthJs = month - 1;
         var date = new Date(year, monthJs);
 
@@ -71,7 +37,7 @@
         table += '</tr></table>';
 
         dates.innerHTML = table;
-    }
+    };
 
     function getDay(date) {
         var day = date.getDay();
@@ -80,26 +46,56 @@
     }
 
 
-    // function addArrowsHedler(){
-    // 	var count = this.monthJs;
-    // 	var year = this.year;
+    var table = document.querySelector("#dates");
+    var field = document.createElement("div");
+    field.id = "field";
+    document.body.appendChild(field);
 
-    // 	document.getElementById("arrowR").addEventListener("onclick", function() {
-    // 		if (count <= 11){
-    // 			var count = 0;
-    // 			year += 1;  
-    // 		}
-    // 		count++
-    // 	});
+    table.onclick = function(event) {
 
-    // 	calendar(year, count++)	
-    // }
+        if (event.target.tagName != 'TD') return;
+        else if (event.target.innerHTML === "") return;
+        activeTd(event.target);
+        field.innerHTML = "День: " + event.target.innerHTML;
+    };
 
-    addSection();
+    var selectedTd;
 
-    // var year = prompt("Какой год?","");
-    // var month = prompt("Какой месяц?","");
+    function activeTd(Td) {
+        if (selectedTd) {
+            selectedTd.classList.remove('active');
+        }
+        selectedTd = Td;
+        selectedTd.classList.add('active');
+    };
 
-    calendar(2017, 11);
+
+
+
+    document.getElementById("arrowL").addEventListener("click", function() {
+
+        this.month = month--;
+        if (month <= 0) {
+            year--;
+            month = 12;
+        }
+
+        calendar(year, month)
+
+    });
+
+    document.getElementById("arrowR").addEventListener("click", function() {
+
+        this.month = month++;
+        if (month > 12) {
+            year++;
+            month = 1;
+        }
+        calendar(year, month)
+
+    });
+
+
+
 
 })();

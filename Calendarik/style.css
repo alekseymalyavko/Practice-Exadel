@@ -17,6 +17,7 @@ td,th {
 font-size: 25px;
 padding: 3px;
 text-align: left;
+
 }
 
 th {
@@ -25,7 +26,10 @@ color: white;
 font-weight: bold;
 }
 
-
+td{
+	user-select: none;
+	cursor: pointer;
+}
 
 #calendar{
 	margin-top: 2%;
@@ -41,17 +45,33 @@ font-weight: bold;
 	margin-top: 7%;
 }
 
+#time{
+		font-size: 25px;
+margin-bottom: 20px;
+
+}
 
 #month{
-	width: 100%;
-	display: flex;
-	font-size: 25px;
 	float: left;
-	margin-bottom: 20px;
+	
+
 }
 #arrows{
-	margin-left: 55%;
 	float: right;
+	margin-right: 10px;
+	cursor: pointer;
 }
 
+#field{
+	position: absolute;
+    background: snow;
+    padding: 30px;
+    right: 25%;
+    top: 30%;
+    border-radius: 50%;
+}
 
+.active{
+	background-color: white;
+	color: black;
+}
