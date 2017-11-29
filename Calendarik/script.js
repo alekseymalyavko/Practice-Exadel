@@ -21,7 +21,7 @@
             table += '<td></td>';
         }
 
-        for (i=0; date.getMonth() === monthJs; i++) {
+        for (; date.getMonth() === monthJs;) {
             table += '<td>' + date.getDate() + '</td>';
 
             if (getDay(date) % 7 === 6) {
@@ -40,9 +40,9 @@
         dates.innerHTML = table;
 
         var tdToday = document.getElementsByTagName("td");
-		if (document.getElementsByTagName("td").innerHTML = String(moment().date()) && month === moment().month() + 1 && year === moment().year()) {
-		tdToday[day+1].style.backgroundColor = 'red';
-	}
+        if (document.getElementsByTagName("td").innerHTML = String(moment().date()) && month === moment().month() + 1 && year === moment().year()) {
+            tdToday[day + 1].style.backgroundColor = 'red';
+        }
     };
 
     function getDay(date) {
@@ -61,7 +61,7 @@
 
     var table = document.querySelector("#dates");
     table.onclick = function(event) {
-    	var field = document.getElementById("field");
+        var field = document.getElementById("field");
         var target = event.target.innerHTML;
 
         if (event.target.tagName !== 'TD') return;
@@ -82,6 +82,7 @@
     };
 
     var selectedTd;
+
     function activeTd(Td) {
         if (selectedTd) {
             selectedTd.classList.remove('active');

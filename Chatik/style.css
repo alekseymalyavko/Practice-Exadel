@@ -1,0 +1,39 @@
+html{
+	height: 100%;
+}
+
+body{
+	background: linear-gradient(50deg, #1e61bf, #11fffe);
+	background-size: cover;
+}
+
+header{
+	height: 50px;
+	background-color: #003260;
+	z-index: 2;
+}
+
+footer{
+	position: fixed;
+    text-align: center;
+    min-height: 50px;
+    background-color: #003260;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+section{
+	background-color: #fff;
+    border-radius: 10%;
+    min-height: 400px;
+    width: 400px;
+    left: 50%;
+    top: 16%;
+    position: absolute;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.regestration{
+	padding: 10px;
+}
