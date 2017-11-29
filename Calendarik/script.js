@@ -20,7 +20,8 @@
         for (var i = 0; i < getDay(date); i++) {
             table += '<td></td>';
         }
-        while (date.getMonth() === monthJs) {
+
+        for (i=0; date.getMonth() === monthJs; i++) {
             table += '<td>' + date.getDate() + '</td>';
 
             if (getDay(date) % 7 === 6) {
@@ -63,7 +64,7 @@
     	var field = document.getElementById("field");
         var target = event.target.innerHTML;
 
-        if (event.target.tagName != 'TD') return;
+        if (event.target.tagName !== 'TD') return;
         else if (target === "") return;
 
         activeTd(event.target);
