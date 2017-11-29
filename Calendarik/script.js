@@ -38,9 +38,9 @@
 
         dates.innerHTML = table;
 
-        var td = document.getElementsByTagName("td");
+        var tdToday = document.getElementsByTagName("td");
 		if (document.getElementsByTagName("td").innerHTML = String(moment().date()) && month === moment().month() + 1 && year === moment().year()) {
-		td[day+1].style.backgroundColor = 'red';
+		tdToday[day+1].style.backgroundColor = 'red';
 	}
     };
 
@@ -60,12 +60,14 @@
 
     var table = document.querySelector("#dates");
     table.onclick = function(event) {
+    	var field = document.getElementById("field");
         var target = event.target.innerHTML;
+
         if (event.target.tagName != 'TD') return;
         else if (target === "") return;
 
         activeTd(event.target);
-        field.innerHTML = moment("" + year + "" + "" + month + "" + "" + event.target.innerHTML + "", 'YYYY/MM/DD').format('dddd') + " " + event.target.innerHTML;
+        field.innerHTML = moment([year, month, parseInt(target)], "YYYY/MM/DD").format('dddd') + " " + event.target.innerHTML;
 
         if (month === moment().month() + 1 && year === moment().year() && target === String(moment().date() + 1)) {
             field.innerHTML = "Tomorrow";
