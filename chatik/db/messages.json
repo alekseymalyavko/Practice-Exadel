@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "name": "aleks",
+  "messages": [
+    {
+      "id": "1512745787767",
+      "letter": "hi dima"
+    },
+    {
+      "id": "1512745802726",
+      "letter": "onclick you can delete message"
+    },
+    {
+      "id": "1512745822120",
+      "letter": "and г can add message in input on enter"
+    },
+    {
+      "id": "1512745859962",
+      "letter": "BUT you should refresh page to see changes"
+    },
+    {
+      "id": "1512746190604",
+      "letter": "my bug"
+    }
+  ]
+}

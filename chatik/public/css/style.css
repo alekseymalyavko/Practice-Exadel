@@ -1,0 +1,101 @@
+html{
+	height: 100%;
+}
+
+body{
+	background: linear-gradient(50deg, #1e61bf, #11fffe);
+	background-size: cover;
+    display: inline-flex;
+}
+
+header{
+	height: 50px;
+	background-color: #003260;
+	z-index: 2;
+}
+
+footer{
+	position: fixed;
+    text-align: center;
+    min-height: 50px;
+    background-color: #003260;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+section{
+	background-color: #fff;
+    border-radius: 10%;
+    min-height: 400px;
+    width: 400px;
+    left: 50%;
+    top: 16%;
+    position: absolute;
+    transform: translateX(-50%);
+    text-align: center;
+    box-shadow: 7px 0 26px rgba(0,0,0,0.5);
+}
+.regestration{
+	padding: 10px;
+}
+
+
+.first_c{
+    text-align:center;
+    margin-top: 9%;
+    position: relative;
+    left: 30%;
+    width: 300px;
+    border-radius: 30px;
+    min-height: 450px;
+    transform: translateX(-50%);
+}
+
+.second_c{
+    text-align: right;
+    margin-top: 9%;
+    position: relative;
+    width: 700px;
+    border-radius: 50px;
+    margin-left: 45px;
+}
+
+.user{
+    box-shadow: 7px 0 26px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.contacts{
+    background-color: #fff;
+    height: 325px;
+    box-shadow: 7px 0 26px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    text-align: left;
+}
+.contacts li{
+    cursor: pointer;
+}
+
+.partner{
+   
+}
+.chat{
+    height: 63%
+}
+
+.chat p {
+    padding: 5px;
+    background-color: #3fb9ec;
+    cursor:pointer;
+}
+
+.chat p:hover {
+    background-color: blue;
+}
+.message{
+    display: flex;
+}
+

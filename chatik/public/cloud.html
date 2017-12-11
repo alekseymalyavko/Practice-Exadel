@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Chat-Clouds</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/materialize.css" />
+</head>
+
+<body>
+    <div class="first_c col 4">
+        <div class="user">
+            <h3>Aleks</h3>
+        </div>
+        <div class="contacts">
+            <h4>Contacts</h4>
+            <ul>
+                <li>Dima</li>
+                <li>Aleksandra</li>
+                <li>Anya</li>
+                <li>Masha</li>
+                <li>Alina</li>
+                <li>Anstasya</li>
+                <li>Vika</li>
+            </ul>
+        </div>
+    </div>
+    <section class="second_c col 8">
+        <div class="partner">
+            <h4>Dima</h4>
+            <hr>
+        </div>
+        <div class="chat" onclick="target(event)" id="chat">
+
+        </div>
+        <div class="message">
+            <input type="text" placeholder="Write your message" id="messageBox">
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="button">Submit<i class="material-icons right">send</i> </button>
+        </div>
+    </section>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
