@@ -1,5 +1,3 @@
-import { getTakers, sortTakers } from './store';
-
 
 const objectsPage = {
   renderTrsTable() {
