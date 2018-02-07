@@ -41,7 +41,7 @@
 
         var tdToday = document.getElementsByTagName("td");
         if (document.getElementsByTagName("td").innerHTML = String(moment().date()) && month === moment().month() + 1 && year === moment().year()) {
-            tdToday[day + 1].style.backgroundColor = 'red';
+            tdToday[day + 2].style.backgroundColor = 'red';
         }
     };
 

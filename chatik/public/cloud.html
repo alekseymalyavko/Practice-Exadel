@@ -11,38 +11,34 @@
 
 <body>
     <div class="first_c col 4">
-        <div class="user">
-            <h3>Aleks</h3>
-        </div>
-        <div class="contacts">
+        <div class="user" id="user">
+    <button class="btn waves-effect waves-light" type="submit" onclick="out()">LogOut!</button>           
+    </div>
+        <div class="contacts"  >
             <h4>Contacts</h4>
-            <ul>
-                <li>Dima</li>
-                <li>Aleksandra</li>
-                <li>Anya</li>
-                <li>Masha</li>
-                <li>Alina</li>
-                <li>Anstasya</li>
-                <li>Vika</li>
+            <div class="input-field col s2">
+                 <i class="material-icons prefix">account_circle</i>
+                <input type="text" class="validate" id="findUser" onclick="findUser(event)">
+                <label for="icon_prefix">Find your friend</label>
+                </div>
+            <ul id="contacts" onclick="contactName(event)">
+                
             </ul>
         </div>
     </div>
     <section class="second_c col 8">
-        <div class="partner">
-            <h4>Dima</h4>
-            <hr>
+        <div class="partner" id="partner">
+      
         </div>
         <div class="chat" onclick="target(event)" id="chat">
 
         </div>
         <div class="message">
             <input type="text" placeholder="Write your message" id="messageBox">
-            <button class="btn waves-effect waves-light" type="submit" name="action" id="button">Submit<i class="material-icons right">send</i> </button>
         </div>
     </section>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/script-cloud.js"></script>
 </body>
-
 </html>

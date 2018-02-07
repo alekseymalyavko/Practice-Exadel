@@ -1,21 +1,21 @@
-html{
-	height: 100%;
+html {
+    height: 100%;
 }
 
-body{
-	background: linear-gradient(50deg, #1e61bf, #11fffe);
-	background-size: cover;
+body {
+    background: linear-gradient(50deg, #1e61bf, #11fffe);
+    background-size: cover;
     display: inline-flex;
 }
 
-header{
-	height: 50px;
-	background-color: #003260;
-	z-index: 2;
+header {
+    height: 50px;
+    background-color: #003260;
+    z-index: 2;
 }
 
-footer{
-	position: fixed;
+footer {
+    position: fixed;
     text-align: center;
     min-height: 50px;
     background-color: #003260;
@@ -24,35 +24,36 @@ footer{
     right: 0;
 }
 
-section{
-	background-color: #fff;
+section {
+    background-color: #fff;
     border-radius: 10%;
-    min-height: 400px;
+    height: 450px;
     width: 400px;
     left: 50%;
     top: 16%;
     position: absolute;
     transform: translateX(-50%);
     text-align: center;
-    box-shadow: 7px 0 26px rgba(0,0,0,0.5);
+    box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);
 }
-.regestration{
-	padding: 10px;
+
+.regestration {
+    padding: 10px;
 }
 
 
-.first_c{
-    text-align:center;
+.first_c {
+    text-align: center;
     margin-top: 9%;
     position: relative;
     left: 30%;
     width: 300px;
     border-radius: 30px;
-    min-height: 450px;
+    height: 450px;
     transform: translateX(-50%);
 }
 
-.second_c{
+.second_c {
     text-align: right;
     margin-top: 9%;
     position: relative;
@@ -61,41 +62,105 @@ section{
     margin-left: 45px;
 }
 
-.user{
-    box-shadow: 7px 0 26px rgba(0,0,0,0.5);
+.user {
+    box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     padding: 10px;
     background-color: #fff;
-}
-
-.contacts{
-    background-color: #fff;
-    height: 325px;
-    box-shadow: 7px 0 26px rgba(0,0,0,0.5);
-    border-radius: 20px;
-    text-align: left;
-}
-.contacts li{
     cursor: pointer;
 }
 
-.partner{
-   
+.user .btn{
+    background-color: red;
+    width: 100%;
+    margin-top: 26px;
+    margin-bottom:  25px;
+    display: none;
 }
-.chat{
+
+.user:hover .btn{ 
+    display:block;
+}
+.user:hover h3{ 
+    display:none; 
+}
+
+.contacts {
+    background-color: #fff;
+    height: 325px;
+    box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    text-align: left;
+}
+
+.contacts h4 {
+    text-align: center;
+}
+
+.contacts li {
+    cursor: pointer;
+    margin-left: 5%;
+    margin-bottom: 3%;
+}
+
+.clicked {
+    background-color: #3fb9ec;
+}
+
+.input-field {
+    position: relative;
+    margin-top: 0;
+}
+
+.partner {
+    margin-right: 6%;
+}
+
+.chat {
+    overflow: auto;
     height: 63%
 }
 
-.chat p {
+
+.friendletter {
+    margin: 8px;
+    border-radius: 8px;
+    float: left;
+    width: 60%;
     padding: 5px;
     background-color: #3fb9ec;
-    cursor:pointer;
+    cursor: pointer;
 }
+
+.userletter {
+    margin: 8px;
+    border-radius: 8px;
+    float: right;
+    width: 60%;
+    padding: 5px;
+    background-color: #3fb9ec;
+    cursor: pointer;
+}
+
 
 .chat p:hover {
     background-color: blue;
 }
-.message{
+
+
+
+.message {
     display: flex;
 }
 
+.chat .btn {
+    float: left;
+    display: none;
+    height: 22px;
+    line-height: 25px;
+    background-color: red;
+}
+
+.chat .userletter:hover .btn {
+    display: block;
+}

@@ -1,26 +1,346 @@
 {
-  "id": 1,
-  "name": "aleks",
   "messages": [
     {
-      "id": "1512745787767",
-      "letter": "hi dima"
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513179993336",
+      "letter": "do u want to fly?",
+      "originalUser": "1"
     },
     {
-      "id": "1512745802726",
-      "letter": "onclick you can delete message"
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513179993336",
+      "letter": "boy",
+      "originalUser": "1"
     },
     {
-      "id": "1512745822120",
-      "letter": "and г can add message in input on enter"
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513179993337",
+      "letter": "yeeeeeeeeeeeeeeess",
+      "originalUser": "2"
     },
     {
-      "id": "1512745859962",
-      "letter": "BUT you should refresh page to see changes"
+      "userIds": [
+        "1",
+        "3"
+      ],
+      "id": "1513801815454",
+      "letter": "how are you?",
+      "originalUser": "1"
     },
     {
-      "id": "1512746190604",
-      "letter": "my bug"
+      "userIds": [
+        "1",
+        "3"
+      ],
+      "id": "1513801809878",
+      "letter": "good",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "1",
+        "3"
+      ],
+      "id": "1513801860177",
+      "letter": "yeah",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "2",
+        "1"
+      ],
+      "id": "1513802583994",
+      "letter": "hi friend",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513850851614",
+      "letter": "ok",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513854582550",
+      "letter": "how are you man?в",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "2",
+        "3"
+      ],
+      "id": "1513854709754",
+      "letter": "hi dimon",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "3",
+        "2"
+      ],
+      "id": "1513854791639",
+      "letter": "hi oreh",
+      "originalUser": "3"
+    },
+    {
+      "userIds": [
+        "3",
+        "2"
+      ],
+      "id": "1513854800573",
+      "letter": "как жизнь брат?",
+      "originalUser": "3"
+    },
+    {
+      "userIds": [
+        "2",
+        "3"
+      ],
+      "id": "1513854823044",
+      "letter": "хорошо, сам как?",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "2",
+        "1"
+      ],
+      "id": "1513855033817",
+      "letter": "огонь, сам как?",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513855053729",
+      "letter": "тоже, делаю чат",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513855976829",
+      "letter": "приветт",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "2",
+        "2"
+      ],
+      "id": "1513856071926",
+      "letter": "привет",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "2",
+        "1"
+      ],
+      "id": "1513856368589",
+      "letter": "чем занимаешься?",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513856385911",
+      "letter": "секрет ",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "2",
+        "2"
+      ],
+      "id": "1513856403263",
+      "letter": "ok",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "2",
+        "1"
+      ],
+      "id": "1513856437498",
+      "letter": "ок",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "2",
+        "2"
+      ],
+      "id": "1513856488450",
+      "letter": "л",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "2",
+        "1"
+      ],
+      "id": "1513856554552",
+      "letter": "пока",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513856849640",
+      "letter": "пока!",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "3"
+      ],
+      "id": "1513856934478",
+      "letter": "привет димоникс!",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "3"
+      ],
+      "id": "1513856936842",
+      "letter": "как прога?",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "3",
+        "1"
+      ],
+      "id": "1513856999677",
+      "letter": "супер",
+      "originalUser": "3"
+    },
+    {
+      "userIds": [
+        "3",
+        "1"
+      ],
+      "id": "1513857004385",
+      "letter": "а у тебя как?",
+      "originalUser": "3"
+    },
+    {
+      "userIds": [
+        "1",
+        "3"
+      ],
+      "id": "1513857045195",
+      "letter": "сойдет....",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "4"
+      ],
+      "id": "1513857084583",
+      "letter": "hi",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "5"
+      ],
+      "id": "1513857122495",
+      "letter": "нравится имя?",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "5",
+        "1"
+      ],
+      "id": "1513859646685",
+      "letter": "нет((((999(",
+      "originalUser": "5"
+    },
+    {
+      "userIds": [
+        "1",
+        "5"
+      ],
+      "id": "1513859685816",
+      "letter": "зато модное....",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513859812506",
+      "letter": "да.... ",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "2",
+        "1"
+      ],
+      "id": "1513861657101",
+      "letter": "tuuttutiutui eerwgwert укце уцкtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукц tuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукцtuuttutiutui eerwgwert укце уцке цук е цук цук цуке   укеукце цук е цук цук цуке   укеукц",
+      "originalUser": "2"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513936160012",
+      "letter": "а",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "1",
+        "2"
+      ],
+      "id": "1513936415204",
+      "letter": "привет брат",
+      "originalUser": "1"
+    },
+    {
+      "userIds": [
+        "2",
+        "1"
+      ],
+      "id": "1513936429231",
+      "letter": "привет алекс",
+      "originalUser": "2"
     }
   ]
 }
