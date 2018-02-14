@@ -9,14 +9,13 @@
 </head>
 <body>
 
-
 <div class="container">  
  <div class="row">
       <div class="col s12 m4 l3">
         <div id="sidebar">
     		<ul>
-    			<li id="createPage">Создать страницу</li>
-    			<li id="createPage">Редактировать</li>
+    			<li id="createPage" class="active">Создать страницу</li>
+    			<li id="loadNews"><a href="allNews.html."> Открыть все новости</a></li>
     		</ul>
     	</div>
 	  </div>
@@ -28,8 +27,7 @@
     		<h2>Создать новость</h2>
 
     		<form name="myForm" class="inputInformation" id="form">
-
-    		<input type="text" id="title" name="title"  placeholder="Введите заголовок">
+    		<input type="text" name="title"  placeholder="Введите заголовок">
     		<input type="text" name="description"  placeholder="Введите краткое описание">
     		<textarea  name="news" placeholder="Введите краткое описание" class="materialize-textarea"></textarea>
     		<input type="submit" value="Отправить!">

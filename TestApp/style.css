@@ -7,6 +7,46 @@ body {
     background-size: cover;
 }
 
+
+
+#article {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px;
+    margin: 20px;
+    text-align: center;
+}
+#article h1{
+    font-size: 25px;
+}
+#article h3{
+    font-size: 19px;
+}
+
+#section{
+    text-align: center;
+    margin: 30px;
+    border: 2px solid;
+    border-radius: 15px;
+}
+.title{
+    margin: 0px;
+    background: mediumvioletred;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+#description{
+    margin-top: 0px;
+    background: #d5d5d5;
+}
+.allNews{
+    background: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px;
+}
+
+
+
 .container .row{
     margin-top: 7%;
 }
@@ -27,6 +67,16 @@ body {
     box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);
     min-height: 400px;
 }
+
+#userField {
+    margin-top: -1.5%;
+    background-color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);
+    min-height: 400px;
+}
+
 
 .inputInformation{
     padding: 15px;

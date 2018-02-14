@@ -11,6 +11,5 @@ module.exports = {
         resp => (resp.json()),
         error => ({ error: error.message || 'Something bad happened' }),
       )
-  ),
-  
+), 
 };
