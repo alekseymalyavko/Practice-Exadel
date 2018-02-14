@@ -1,14 +1,13 @@
 html {
     height: 100%;
 }
-
 body {
     background: linear-gradient(71deg, #c22de8, #16e8c8);
     background-size: cover;
 }
-
-
-
+section{
+    cursor: pointer;
+}
 #article {
     background: white;
     border-radius: 15px;
@@ -35,22 +34,23 @@ body {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
+.title:hover{
+    text-decoration: underline;
+    background-color: #e4008f;
+}
 #description{
     margin-top: 0px;
     background: #d5d5d5;
 }
 .allNews{
+    text-align: center;
     background: white;
     border-radius: 15px;
     box-shadow: 2px 2px 20px;
 }
-
-
-
 .container .row{
     margin-top: 7%;
 }
-
 #sidebar{
     background-color: #fff;
     border-radius: 10px;
@@ -58,7 +58,6 @@ body {
     box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);  
     min-height: 400px;
 }
-
 #adminField {
     margin-top: -1.5%;
     background-color: #fff;
@@ -67,7 +66,6 @@ body {
     box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);
     min-height: 400px;
 }
-
 #userField {
     margin-top: -1.5%;
     background-color: #fff;
@@ -76,8 +74,9 @@ body {
     box-shadow: 7px 0 26px rgba(0, 0, 0, 0.5);
     min-height: 400px;
 }
-
-
+#news{
+    word-wrap: break-word;
+}
 .inputInformation{
     padding: 15px;
 }
@@ -88,8 +87,13 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
+
 #sidebar li:hover{
     background: #16e8c8 ;
+}
+.active{
+     background: #16e8c8 ;
+   
 }
 
 #sidebar ul{
