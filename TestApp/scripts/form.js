@@ -1,4 +1,7 @@
-const form = document.getElementById("form")
+const form = document.getElementById("form");
+const getRandomId = (min, max)=> {
+            return Math.round(Math.random() * (max - min) + min);
+        };
 
 if (form) {
     form.addEventListener('submit', (e) => {
@@ -21,7 +24,6 @@ if (form) {
                 news: news
             };
 
-
             fetch("https://jsonblob.com/api/jsonBlob/0dcd4172-0d9a-11e8-8cfd-d5ef9f6c6c7d", {
                     method: 'get'
                 })
@@ -32,7 +34,6 @@ if (form) {
                 .then(res => {
 
                     const urls = [...res];
-
                     fetch('https://jsonblob.com/api/jsonBlob', {
                             method: 'POST',
                             headers: {
@@ -56,6 +57,7 @@ if (form) {
                                     body: JSON.stringify(urls)
                                 })
                                 .then(res => res.json())
+                                .catch(console.log)
                                 .then(res => {
 
                                     window.location.href = "file:///C:/Users/lexam/Desktop/practice/hello-world/TestApp/page.html"
@@ -68,10 +70,5 @@ if (form) {
         } else {
             alert("check form")
         }
-
-        function getRandomId(min, max) {
-            return Math.round(Math.random() * (max - min) + min);
-        }
-
     });
 };

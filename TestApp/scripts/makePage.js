@@ -1,6 +1,6 @@
-(function createPage() {
+(createPage => {
 
-    if (document.getElementById('article')) {
+if (document.getElementById('article')) {
 
         const data = JSON.parse(localStorage.getItem("urls"));
 
@@ -27,14 +27,12 @@
                 error => ({ error: error.message || 'Something bad happened' }),
             )
             .then((resp) => {
-                console.log(resp);
-
-                id = resp.id;
+                id = resp.id;       
                 title = resp.title;
                 description = resp.description;
                 news = resp.news;
 
-                let getTitle = document.getElementById('title');
+                const getTitle = document.getElementById('title');     
                 getTitle.setAttribute('data-news-id', id);
                 getTitle.innerHTML = title;
                 document.getElementById('description').innerHTML = description;
@@ -42,3 +40,6 @@
             });
     };
 })();
+
+//форма регистрации,выбрать город, выбрать пол, чекбоксы, ник емайл телефон пароль не менее, условия, красный цвет внизу, 
+//просто отправить данные на текст, вывести на страницу

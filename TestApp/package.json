@@ -6,7 +6,7 @@
     "build": "webpack --watch --config webpack.config.js",
     "lint": "eslint scripts/"
   },
-  "author": "Aleksey Mukho",
+  "author": "Aleksey Malyavko",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",

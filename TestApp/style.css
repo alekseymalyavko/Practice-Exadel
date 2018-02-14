@@ -87,7 +87,6 @@ section{
     cursor: pointer;
     border-radius: 5px;
 }
-
 #sidebar li:hover{
     background: #16e8c8 ;
 }
@@ -95,7 +94,17 @@ section{
      background: #16e8c8 ;
    
 }
-
 #sidebar ul{
     padding-top: 50%;
+}
+#title{
+    cursor: pointer;
+    margin: 0px;
+    background: mediumvioletred;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+#title:hover{
+    text-decoration: underline;
+    background-color: #e4008f;
 }

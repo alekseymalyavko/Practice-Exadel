@@ -1,2 +1,3 @@
-# hello-world
-hello dima
+# Here my skills and abilities
+
+JS+HTML+CSS
