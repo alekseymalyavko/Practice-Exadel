@@ -8,6 +8,9 @@ body {
 section{
     cursor: pointer;
 }
+select{
+    display: block;
+}
 #article {
     background: white;
     border-radius: 15px;
@@ -108,3 +111,6 @@ section{
     text-decoration: underline;
     background-color: #e4008f;
 }
+ .error input{
+    border: 1px solid red;
+    }
